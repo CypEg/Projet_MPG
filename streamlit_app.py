@@ -64,11 +64,22 @@ if page == pages[0] :
 # Gestion des homonymes
 Ligue1_J9_raw.loc[(Ligue1_J9_raw["Joueur"] == "Marquinhos") & (Ligue1_J9_raw["Club"] == "FC Nantes"), "Joueur"] = "Marquinhos Oliveira Alencar"
 Ligue1_J11_raw.loc[(Ligue1_J9_raw["Joueur"] == "Marquinhos") & (Ligue1_J11_raw["Club"] == "FC Nantes"), "Joueur"] = "Marquinhos Oliveira Alencar"
+
+Ligue1_J9_raw.loc[(Ligue1_J9_raw["Joueur"] == "Logan Costa Logan"), "Joueur"] = "Logan Costa"
+Ligue1_J11_raw.loc[(Ligue1_J11_raw["Joueur"] == "Logan Costa Logan"), "Joueur"] = "Logan Costa"
+
 PremierLeague_J9_raw.loc[(PremierLeague_J9_raw["Joueur"] == "Danilo") & (PremierLeague_J9_raw["Club"] == "Nottingham Forest"), "Joueur"] = "Danilo dos Santos de Oliveira"
 PremierLeague_J11_raw.loc[(PremierLeague_J11_raw["Joueur"] == "Danilo") & (PremierLeague_J11_raw["Club"] == "Nottingham Forest"), "Joueur"] = "Danilo dos Santos de Oliveira"
 
 PremierLeague_J9_raw.loc[(PremierLeague_J9_raw["Joueur"] == "Hwang Hee-Chan Hee-Chan"), "Joueur"] = "Hwang Hee-Chan"
 PremierLeague_J11_raw.loc[(PremierLeague_J9_raw["Joueur"] == "Hwang Hee-Chan Hee-Chan"), "Joueur"] = "Hwang Hee-Chan"
+
+Liga_J10_raw.loc[(Liga_J10_raw["Joueur"] == "Iñaki Williams Iñaki"), "Joueur"] = "Iñaki Williams"
+Liga_J12_raw.loc[(Liga_J12_raw["Joueur"] == "Iñaki Williams Iñaki"), "Joueur"] = "Iñaki Williams"
+Liga_J10_raw.loc[(Liga_J10_raw["Joueur"] == "Gerard Moreno Gerard"), "Joueur"] = "Gerard Moreno"
+Liga_J12_raw.loc[(Liga_J12_raw["Joueur"] == "Gerard Moreno Gerard"), "Joueur"] = "Gerard Moreno"
+Liga_J10_raw.loc[(Liga_J10_raw["Joueur"] == "Aleix García Aleix"), "Joueur"] = "Aleix García"
+Liga_J12_raw.loc[(Liga_J12_raw["Joueur"] == "Aleix García Aleix"), "Joueur"] = "Aleix García"
 
 # Ajout d'une colonne ligue pour chaque ligue
 Ligue1_J9_raw["Ligue"] = "Ligue 1"
@@ -1172,13 +1183,13 @@ def compo_viz(compo, tactique):
         plt.text(35, 30, compo["defenseur_central"][1], fontsize = 15)
         # Défenseur lateraux
         plt.text(5, 35, compo["defenseur_lateral"][0], fontsize = 15)
-        plt.text(50, 35, compo["defenseur_lateral"][1], fontsize = 15)
+        plt.text(45, 35, compo["defenseur_lateral"][1], fontsize = 15)
         # Milieux défensifs
         plt.text(15, 45, compo["milieu_def"][0], fontsize = 15)
         plt.text(35, 45, compo["milieu_def"][1], fontsize = 15)
         # Milieux offensifs
         plt.text(5, 55, compo["milieu_off"][0], fontsize = 15)
-        plt.text(50, 55, compo["milieu_off"][1], fontsize = 15)
+        plt.text(45, 55, compo["milieu_off"][1], fontsize = 15)
         # Attaquants
         plt.text(15, 75, compo["attaque"][0], fontsize = 15)
         plt.text(35, 75, compo["attaque"][1], fontsize = 15)
@@ -1191,7 +1202,7 @@ def compo_viz(compo, tactique):
         plt.text(35, 30, compo["defenseur_central"][1], fontsize = 15)
         # Défenseur lateraux
         plt.text(5, 35, compo["defenseur_lateral"][0], fontsize = 15)
-        plt.text(50, 35, compo["defenseur_lateral"][1], fontsize = 15)
+        plt.text(45, 35, compo["defenseur_lateral"][1], fontsize = 15)
         # Milieux défensifs
         plt.text(25, 45, compo["milieu_def"][0], fontsize = 15)
         # Milieux offensifs
@@ -1210,7 +1221,7 @@ def compo_viz(compo, tactique):
         plt.text(35, 30, compo["defenseur_central"][1], fontsize = 15)
         # Défenseur lateraux
         plt.text(5, 35, compo["defenseur_lateral"][0], fontsize = 15)
-        plt.text(50, 35, compo["defenseur_lateral"][1], fontsize = 15)
+        plt.text(45, 35, compo["defenseur_lateral"][1], fontsize = 15)
         # Milieux défensifs
         plt.text(25, 45, compo["milieu_def"][0], fontsize = 15)
         # Milieux offensifs
@@ -1229,7 +1240,7 @@ def compo_viz(compo, tactique):
         plt.text(35, 30, compo["defenseur_central"][1], fontsize = 15)
         # Défenseur lateraux
         plt.text(5, 35, compo["defenseur_lateral"][0], fontsize = 15)
-        plt.text(50, 35, compo["defenseur_lateral"][1], fontsize = 15)
+        plt.text(45, 35, compo["defenseur_lateral"][1], fontsize = 15)
         # Milieux défensifs
         plt.text(18, 45, compo["milieu_def"][0], fontsize = 15)
         plt.text(35, 45, compo["milieu_def"][1], fontsize = 15)        
@@ -1267,7 +1278,7 @@ def compo_viz(compo, tactique):
         plt.text(42, 30, compo["defenseur_central"][2], fontsize = 15)
         # Défenseur lateraux
         plt.text(5, 35, compo["defenseur_lateral"][0], fontsize = 15)
-        plt.text(50, 35, compo["defenseur_lateral"][1], fontsize = 15)
+        plt.text(45, 35, compo["defenseur_lateral"][1], fontsize = 15)
         # Milieux défensifs
         plt.text(18, 45, compo["milieu_def"][0], fontsize = 15)
         plt.text(35, 45, compo["milieu_def"][1], fontsize = 15)        
