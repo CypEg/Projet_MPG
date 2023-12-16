@@ -559,7 +559,7 @@ if page == pages[4] :
     plt.title('Régression Linéaire pour la prédiction des notes des joueurs')    
     st.pyplot(fig)  
     
-    st.markdown("*Le score variera à chaque changement de page car l'algorithme s'entraîne à chaque fois sur des données tirées au hasard*.")
+    st.markdown("*Dans un souci de comparaison et pour éviter le relancement des calculs aléatoires de l'algorithme, un 'random state' a été spécifié*.")
 
 #%% Ajout du contenu nécessaire à la première classification
 q1, q3, q5, q7, q9 = active_players["Note"].quantile(q = [0.1, 0.3, 0.5, 0.7, 0.9])
@@ -633,7 +633,7 @@ if page == pages[5] :
         st.dataframe(scores(clf, display))
     elif display == 'Rapport de Classification':
         st.dataframe(scores(clf, display).transpose())
-    st.markdown("*Le score variera à chaque changement d'options car l'algorithme s'entraîne à chaque fois sur des données tirées au hasard*.")
+    st.markdown("*Dans un souci de comparaison et pour éviter le relancement des calculs aléatoires des algorithmes, un 'random state' a été spécifié*.")
        
     st.markdown("<div style='text-align: justify;'>On constate que les résultats obtenus sont moins performants que notre régression linéaire.</div>", unsafe_allow_html=True)
         
