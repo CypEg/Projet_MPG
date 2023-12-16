@@ -525,7 +525,7 @@ col_cible = ["Note"]
 
 data_rl = all_players[col_ML]
 target_rl = all_players[col_cible]
-X_train_rl, X_test_rl, y_train_rl, y_test_rl = train_test_split(data_rl, target_rl, test_size = 0.25)
+X_train_rl, X_test_rl, y_train_rl, y_test_rl = train_test_split(data_rl, target_rl, test_size = 0.25, random_state = 27)
 X_train_rl = X_train_rl.fillna(0)
 X_test_rl = X_test_rl.fillna(0)
 X_train_rl = pd.get_dummies(X_train_rl, columns = ["Poste"], dtype = 'int')
@@ -561,7 +561,6 @@ if page == pages[4] :
     
     st.markdown("*Le score variera à chaque changement de page car l'algorithme s'entraîne à chaque fois sur des données tirées au hasard*.")
 
-
 #%% Ajout du contenu nécessaire à la première classification
 q1, q3, q5, q7, q9 = active_players["Note"].quantile(q = [0.1, 0.3, 0.5, 0.7, 0.9])
 
@@ -573,7 +572,7 @@ data_class = all_players[col_class]
 data_class["eval"] = pd.cut(data_class["Note"], [-np.inf, 0, q1, q3, q5, q7, q9, 10], labels=[0, 1, 2, 3, 4, 5, 6])
 target_class = data_class["eval"]
 data_class = data_class[col_ML]
-X_train_class, X_test_class, y_train_class, y_test_class = train_test_split(data_class, target_class, test_size = 0.25)
+X_train_class, X_test_class, y_train_class, y_test_class = train_test_split(data_class, target_class, test_size = 0.25, random_state = 27)
 
 X_train_class = X_train_class.fillna(0)
 X_test_class = X_test_class.fillna(0)
@@ -644,7 +643,7 @@ data["eval"] = pd.cut(data["Note"], [-np.inf, 0, q1, q7, q9, 10], labels=[0, 1, 
 target = data["eval"]
 data = data[col_ML]
 
-X_train, X_test, y_train, y_test = train_test_split(data, target, test_size = 0.25)
+X_train, X_test, y_train, y_test = train_test_split(data, target, test_size = 0.25, random_state = 27)
 X_train = X_train.fillna(0)
 X_test = X_test.fillna(0)
 X_train = pd.get_dummies(X_train, columns = ["Poste"], dtype = 'int')
@@ -656,11 +655,11 @@ new_choix = ['Régression Logistique', 'Arbre de Décission']
 
 def new_prediction(classifier):
    if classifier == 'Régression Logistique':
-     clf = LogisticRegression()
+     clf = LogisticRegression(random_state = 27)
    elif classifier == 'Arbre de Décission':
-     clf = DecisionTreeClassifier()    
+     clf = DecisionTreeClassifier(random_state = 27)    
    elif classifier == 'Forêt Aléatoire':
-     clf = RandomForestClassifier()    
+     clf = RandomForestClassifier(random_state = 27)    
    clf.fit(X_train, y_train)
    return clf
 
@@ -861,89 +860,89 @@ if page == pages[7] :
  
 
 #%% Ajout du contenu nécessaire à la fonction Composition
-ligue1_442_LR = mercato(all_players, "Ligue 1", 500, "4-4-2", LogisticRegression())[0]
-ligue1_433_LR = mercato(all_players, "Ligue 1", 500, "4-3-3", LogisticRegression())[0]
-ligue1_4123_LR = mercato(all_players, "Ligue 1", 500, "4-1-2-3", LogisticRegression())[0]
-ligue1_4213_LR = mercato(all_players, "Ligue 1", 500, "4-2-1-3", LogisticRegression())[0]
-ligue1_352_LR = mercato(all_players, "Ligue 1", 500, "3-5-2", LogisticRegression())[0]
-ligue1_532_LR = mercato(all_players, "Ligue 1", 500, "5-3-2", LogisticRegression())[0]
+ligue1_442_LR = mercato(all_players, "Ligue 1", 500, "4-4-2", LogisticRegression(random_state = 27))[0]
+ligue1_433_LR = mercato(all_players, "Ligue 1", 500, "4-3-3", LogisticRegression(random_state = 27))[0]
+ligue1_4123_LR = mercato(all_players, "Ligue 1", 500, "4-1-2-3", LogisticRegression(random_state = 27))[0]
+ligue1_4213_LR = mercato(all_players, "Ligue 1", 500, "4-2-1-3", LogisticRegression(random_state = 27))[0]
+ligue1_352_LR = mercato(all_players, "Ligue 1", 500, "3-5-2", LogisticRegression(random_state = 27))[0]
+ligue1_532_LR = mercato(all_players, "Ligue 1", 500, "5-3-2", LogisticRegression(random_state = 27))[0]
 
-ligue1_442_DTC = mercato(all_players, "Ligue 1", 500, "4-4-2", DecisionTreeClassifier())[0]
-ligue1_433_DTC = mercato(all_players, "Ligue 1", 500, "4-3-3", DecisionTreeClassifier())[0]
-ligue1_4123_DTC = mercato(all_players, "Ligue 1", 500, "4-1-2-3", DecisionTreeClassifier())[0]
-ligue1_4213_DTC = mercato(all_players, "Ligue 1", 500, "4-2-1-3", DecisionTreeClassifier())[0]
-ligue1_352_DTC = mercato(all_players, "Ligue 1", 500, "3-5-2", DecisionTreeClassifier())[0]
-ligue1_532_DTC = mercato(all_players, "Ligue 1", 500, "5-3-2", DecisionTreeClassifier())[0]
+ligue1_442_DTC = mercato(all_players, "Ligue 1", 500, "4-4-2", DecisionTreeClassifier(random_state = 27))[0]
+ligue1_433_DTC = mercato(all_players, "Ligue 1", 500, "4-3-3", DecisionTreeClassifier(random_state = 27))[0]
+ligue1_4123_DTC = mercato(all_players, "Ligue 1", 500, "4-1-2-3", DecisionTreeClassifier(random_state = 27))[0]
+ligue1_4213_DTC = mercato(all_players, "Ligue 1", 500, "4-2-1-3", DecisionTreeClassifier(random_state = 27))[0]
+ligue1_352_DTC = mercato(all_players, "Ligue 1", 500, "3-5-2", DecisionTreeClassifier(random_state = 27))[0]
+ligue1_532_DTC = mercato(all_players, "Ligue 1", 500, "5-3-2", DecisionTreeClassifier(random_state = 27))[0]
 
-ligue2_442_LR = mercato(all_players, "Ligue 2", 500, "4-4-2", LogisticRegression())[0]
-ligue2_433_LR = mercato(all_players, "Ligue 2", 500, "4-3-3", LogisticRegression())[0]
-ligue2_4123_LR = mercato(all_players, "Ligue 2", 500, "4-1-2-3", LogisticRegression())[0]
-ligue2_4213_LR = mercato(all_players, "Ligue 2", 500, "4-2-1-3", LogisticRegression())[0]
-ligue2_352_LR = mercato(all_players, "Ligue 2", 500, "3-5-2", LogisticRegression())[0]
-ligue2_532_LR = mercato(all_players, "Ligue 2", 500, "5-3-2", LogisticRegression())[0]
+ligue2_442_LR = mercato(all_players, "Ligue 2", 500, "4-4-2", LogisticRegression(random_state = 27))[0]
+ligue2_433_LR = mercato(all_players, "Ligue 2", 500, "4-3-3", LogisticRegression(random_state = 27))[0]
+ligue2_4123_LR = mercato(all_players, "Ligue 2", 500, "4-1-2-3", LogisticRegression(random_state = 27))[0]
+ligue2_4213_LR = mercato(all_players, "Ligue 2", 500, "4-2-1-3", LogisticRegression(random_state = 27))[0]
+ligue2_352_LR = mercato(all_players, "Ligue 2", 500, "3-5-2", LogisticRegression(random_state = 27))[0]
+ligue2_532_LR = mercato(all_players, "Ligue 2", 500, "5-3-2", LogisticRegression(random_state = 27))[0]
 
-ligue2_442_DTC = mercato(all_players, "Ligue 2", 500, "4-4-2", DecisionTreeClassifier())[0]
-ligue2_433_DTC = mercato(all_players, "Ligue 2", 500, "4-3-3", DecisionTreeClassifier())[0]
-ligue2_4123_DTC = mercato(all_players, "Ligue 2", 500, "4-1-2-3", DecisionTreeClassifier())[0]
-ligue2_4213_DTC = mercato(all_players, "Ligue 2", 500, "4-2-1-3", DecisionTreeClassifier())[0]
-ligue2_352_DTC = mercato(all_players, "Ligue 2", 500, "3-5-2", DecisionTreeClassifier())[0]
-ligue2_532_DTC = mercato(all_players, "Ligue 2", 500, "5-3-2", DecisionTreeClassifier())[0]
+ligue2_442_DTC = mercato(all_players, "Ligue 2", 500, "4-4-2", DecisionTreeClassifier(random_state = 27))[0]
+ligue2_433_DTC = mercato(all_players, "Ligue 2", 500, "4-3-3", DecisionTreeClassifier(random_state = 27))[0]
+ligue2_4123_DTC = mercato(all_players, "Ligue 2", 500, "4-1-2-3", DecisionTreeClassifier(random_state = 27))[0]
+ligue2_4213_DTC = mercato(all_players, "Ligue 2", 500, "4-2-1-3", DecisionTreeClassifier(random_state = 27))[0]
+ligue2_352_DTC = mercato(all_players, "Ligue 2", 500, "3-5-2", DecisionTreeClassifier(random_state = 27))[0]
+ligue2_532_DTC = mercato(all_players, "Ligue 2", 500, "5-3-2", DecisionTreeClassifier(random_state = 27))[0]
 
-premierleague_442_LR = mercato(all_players, "Premier League", 500, "4-4-2", LogisticRegression())[0]
-premierleague_433_LR = mercato(all_players, "Premier League", 500, "4-3-3", LogisticRegression())[0]
-premierleague_4123_LR = mercato(all_players, "Premier League", 500, "4-1-2-3", LogisticRegression())[0]
-premierleague_4213_LR = mercato(all_players, "Premier League", 500, "4-2-1-3", LogisticRegression())[0]
-premierleague_352_LR = mercato(all_players, "Premier League", 500, "3-5-2", LogisticRegression())[0]
-premierleague_532_LR = mercato(all_players, "Premier League", 500, "5-3-2", LogisticRegression())[0]
+premierleague_442_LR = mercato(all_players, "Premier League", 500, "4-4-2", LogisticRegression(random_state = 27))[0]
+premierleague_433_LR = mercato(all_players, "Premier League", 500, "4-3-3", LogisticRegression(random_state = 27))[0]
+premierleague_4123_LR = mercato(all_players, "Premier League", 500, "4-1-2-3", LogisticRegression(random_state = 27))[0]
+premierleague_4213_LR = mercato(all_players, "Premier League", 500, "4-2-1-3", LogisticRegression(random_state = 27))[0]
+premierleague_352_LR = mercato(all_players, "Premier League", 500, "3-5-2", LogisticRegression(random_state = 27))[0]
+premierleague_532_LR = mercato(all_players, "Premier League", 500, "5-3-2", LogisticRegression(random_state = 27))[0]
 
-premierleague_442_DTC = mercato(all_players, "Premier League", 500, "4-4-2", DecisionTreeClassifier())[0]
-premierleague_433_DTC = mercato(all_players, "Premier League", 500, "4-3-3", DecisionTreeClassifier())[0]
-premierleague_4123_DTC = mercato(all_players, "Premier League", 500, "4-1-2-3", DecisionTreeClassifier())[0]
-premierleague_4213_DTC = mercato(all_players, "Premier League", 500, "4-2-1-3", DecisionTreeClassifier())[0]
-premierleague_352_DTC = mercato(all_players, "Premier League", 500, "3-5-2", DecisionTreeClassifier())[0]
-premierleague_532_DTC = mercato(all_players, "Premier League", 500, "5-3-2", DecisionTreeClassifier())[0]
+premierleague_442_DTC = mercato(all_players, "Premier League", 500, "4-4-2", DecisionTreeClassifier(random_state = 27))[0]
+premierleague_433_DTC = mercato(all_players, "Premier League", 500, "4-3-3", DecisionTreeClassifier(random_state = 27))[0]
+premierleague_4123_DTC = mercato(all_players, "Premier League", 500, "4-1-2-3", DecisionTreeClassifier(random_state = 27))[0]
+premierleague_4213_DTC = mercato(all_players, "Premier League", 500, "4-2-1-3", DecisionTreeClassifier(random_state = 27))[0]
+premierleague_352_DTC = mercato(all_players, "Premier League", 500, "3-5-2", DecisionTreeClassifier(random_state = 27))[0]
+premierleague_532_DTC = mercato(all_players, "Premier League", 500, "5-3-2", DecisionTreeClassifier(random_state = 27))[0]
 
-liga_442_LR = mercato(all_players, "Liga", 500, "4-4-2", LogisticRegression())[0]
-liga_433_LR = mercato(all_players, "Liga", 500, "4-3-3", LogisticRegression())[0]
-liga_4123_LR = mercato(all_players, "Liga", 500, "4-1-2-3", LogisticRegression())[0]
-liga_4213_LR = mercato(all_players, "Liga", 500, "4-2-1-3", LogisticRegression())[0]
-liga_352_LR = mercato(all_players, "Liga", 500, "3-5-2", LogisticRegression())[0]
-liga_532_LR = mercato(all_players, "Liga", 500, "5-3-2", LogisticRegression())[0]
+liga_442_LR = mercato(all_players, "Liga", 500, "4-4-2", LogisticRegression(random_state = 27))[0]
+liga_433_LR = mercato(all_players, "Liga", 500, "4-3-3", LogisticRegression(random_state = 27))[0]
+liga_4123_LR = mercato(all_players, "Liga", 500, "4-1-2-3", LogisticRegression(random_state = 27))[0]
+liga_4213_LR = mercato(all_players, "Liga", 500, "4-2-1-3", LogisticRegression(random_state = 27))[0]
+liga_352_LR = mercato(all_players, "Liga", 500, "3-5-2", LogisticRegression(random_state = 27))[0]
+liga_532_LR = mercato(all_players, "Liga", 500, "5-3-2", LogisticRegression(random_state = 27))[0]
 
-liga_442_DTC = mercato(all_players, "Liga", 500, "4-4-2", DecisionTreeClassifier())[0]
-liga_433_DTC = mercato(all_players, "Liga", 500, "4-3-3", DecisionTreeClassifier())[0]
-liga_4123_DTC = mercato(all_players, "Liga", 500, "4-1-2-3", DecisionTreeClassifier())[0]
-liga_4213_DTC = mercato(all_players, "Liga", 500, "4-2-1-3", DecisionTreeClassifier())[0]
-liga_352_DTC = mercato(all_players, "Liga", 500, "3-5-2", DecisionTreeClassifier())[0]
-liga_532_DTC = mercato(all_players, "Liga", 500, "5-3-2", DecisionTreeClassifier())[0]
+liga_442_DTC = mercato(all_players, "Liga", 500, "4-4-2", DecisionTreeClassifier(random_state = 27))[0]
+liga_433_DTC = mercato(all_players, "Liga", 500, "4-3-3", DecisionTreeClassifier(random_state = 27))[0]
+liga_4123_DTC = mercato(all_players, "Liga", 500, "4-1-2-3", DecisionTreeClassifier(random_state = 27))[0]
+liga_4213_DTC = mercato(all_players, "Liga", 500, "4-2-1-3", DecisionTreeClassifier(random_state = 27))[0]
+liga_352_DTC = mercato(all_players, "Liga", 500, "3-5-2", DecisionTreeClassifier(random_state = 27))[0]
+liga_532_DTC = mercato(all_players, "Liga", 500, "5-3-2", DecisionTreeClassifier(random_state = 27))[0]
 
-serieA_442_LR = mercato(all_players, "Serie A", 500, "4-4-2", LogisticRegression())[0]
-serieA_433_LR = mercato(all_players, "Serie A", 500, "4-3-3", LogisticRegression())[0]
-serieA_4123_LR = mercato(all_players, "Serie A", 500, "4-1-2-3", LogisticRegression())[0]
-serieA_4213_LR = mercato(all_players, "Serie A", 500, "4-2-1-3", LogisticRegression())[0]
-serieA_352_LR = mercato(all_players, "Serie A", 500, "3-5-2", LogisticRegression())[0]
-serieA_532_LR = mercato(all_players, "Serie A", 500, "5-3-2", LogisticRegression())[0]
+serieA_442_LR = mercato(all_players, "Serie A", 500, "4-4-2", LogisticRegression(random_state = 27))[0]
+serieA_433_LR = mercato(all_players, "Serie A", 500, "4-3-3", LogisticRegression(random_state = 27))[0]
+serieA_4123_LR = mercato(all_players, "Serie A", 500, "4-1-2-3", LogisticRegression(random_state = 27))[0]
+serieA_4213_LR = mercato(all_players, "Serie A", 500, "4-2-1-3", LogisticRegression(random_state = 27))[0]
+serieA_352_LR = mercato(all_players, "Serie A", 500, "3-5-2", LogisticRegression(random_state = 27))[0]
+serieA_532_LR = mercato(all_players, "Serie A", 500, "5-3-2", LogisticRegression(random_state = 27))[0]
 
-serieA_442_DTC = mercato(all_players, "Serie A", 500, "4-4-2", DecisionTreeClassifier())[0]
-serieA_433_DTC = mercato(all_players, "Serie A", 500, "4-3-3", DecisionTreeClassifier())[0]
-serieA_4123_DTC = mercato(all_players, "Serie A", 500, "4-1-2-3", DecisionTreeClassifier())[0]
-serieA_4213_DTC = mercato(all_players, "Serie A", 500, "4-2-1-3", DecisionTreeClassifier())[0]
-serieA_352_DTC = mercato(all_players, "Serie A", 500, "3-5-2", DecisionTreeClassifier())[0]
-serieA_532_DTC = mercato(all_players, "Serie A", 500, "5-3-2", DecisionTreeClassifier())[0]
+serieA_442_DTC = mercato(all_players, "Serie A", 500, "4-4-2", DecisionTreeClassifier(random_state = 27))[0]
+serieA_433_DTC = mercato(all_players, "Serie A", 500, "4-3-3", DecisionTreeClassifier(random_state = 27))[0]
+serieA_4123_DTC = mercato(all_players, "Serie A", 500, "4-1-2-3", DecisionTreeClassifier(random_state = 27))[0]
+serieA_4213_DTC = mercato(all_players, "Serie A", 500, "4-2-1-3", DecisionTreeClassifier(random_state = 27))[0]
+serieA_352_DTC = mercato(all_players, "Serie A", 500, "3-5-2", DecisionTreeClassifier(random_state = 27))[0]
+serieA_532_DTC = mercato(all_players, "Serie A", 500, "5-3-2", DecisionTreeClassifier(random_state = 27))[0]
 
-all_442_LR = mercato(all_players, "Tous les joueurs", 500, "4-4-2", LogisticRegression())[0]
-all_433_LR = mercato(all_players, "Tous les joueurs", 500, "4-3-3", LogisticRegression())[0]
-all_4123_LR = mercato(all_players, "Tous les joueurs", 500, "4-1-2-3", LogisticRegression())[0]
-all_4213_LR = mercato(all_players, "Tous les joueurs", 500, "4-2-1-3", LogisticRegression())[0]
-all_352_LR = mercato(all_players, "Tous les joueurs", 500, "3-5-2", LogisticRegression())[0]
-all_532_LR = mercato(all_players, "Tous les joueurs", 500, "5-3-2", LogisticRegression())[0]
+all_442_LR = mercato(all_players, "Tous les joueurs", 500, "4-4-2", LogisticRegression(random_state = 27))[0]
+all_433_LR = mercato(all_players, "Tous les joueurs", 500, "4-3-3", LogisticRegression(random_state = 27))[0]
+all_4123_LR = mercato(all_players, "Tous les joueurs", 500, "4-1-2-3", LogisticRegression(random_state = 27))[0]
+all_4213_LR = mercato(all_players, "Tous les joueurs", 500, "4-2-1-3", LogisticRegression(random_state = 27))[0]
+all_352_LR = mercato(all_players, "Tous les joueurs", 500, "3-5-2", LogisticRegression(random_state = 27))[0]
+all_532_LR = mercato(all_players, "Tous les joueurs", 500, "5-3-2", LogisticRegression(random_state = 27))[0]
 
-all_442_DTC = mercato(all_players, "Tous les joueurs", 500, "4-4-2", DecisionTreeClassifier())[0]
-all_433_DTC = mercato(all_players, "Tous les joueurs", 500, "4-3-3", DecisionTreeClassifier())[0]
-all_4123_DTC = mercato(all_players, "Tous les joueurs", 500, "4-1-2-3", DecisionTreeClassifier())[0]
-all_4213_DTC = mercato(all_players, "Tous les joueurs", 500, "4-2-1-3", DecisionTreeClassifier())[0]
-all_352_DTC = mercato(all_players, "Tous les joueurs", 500, "3-5-2", DecisionTreeClassifier())[0]
-all_532_DTC = mercato(all_players, "Tous les joueurs", 500, "5-3-2", DecisionTreeClassifier())[0]
+all_442_DTC = mercato(all_players, "Tous les joueurs", 500, "4-4-2", DecisionTreeClassifier(random_state = 27))[0]
+all_433_DTC = mercato(all_players, "Tous les joueurs", 500, "4-3-3", DecisionTreeClassifier(random_state = 27))[0]
+all_4123_DTC = mercato(all_players, "Tous les joueurs", 500, "4-1-2-3", DecisionTreeClassifier(random_state = 27))[0]
+all_4213_DTC = mercato(all_players, "Tous les joueurs", 500, "4-2-1-3", DecisionTreeClassifier(random_state = 27))[0]
+all_352_DTC = mercato(all_players, "Tous les joueurs", 500, "3-5-2", DecisionTreeClassifier(random_state = 27))[0]
+all_532_DTC = mercato(all_players, "Tous les joueurs", 500, "5-3-2", DecisionTreeClassifier(random_state = 27))[0]
 
 def composition(effectif, tactique):
     
