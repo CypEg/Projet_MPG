@@ -122,11 +122,11 @@ all_players["%Titu"] = all_players["%Titu"] * 100
 if page == pages[1] :
     st.write("## Les Données")
     st.write("Les données utilisées lors de ce projet proviennent du site [MPG stats](https://www.mpgstats.fr/).")
-    st.markdown("<div style='text-align: justify;'>Les données d'origine se présentent sous la forme de tableau selon différentes informations comme le tableau de la ligue, des tableaux sur les top joueurs ainsi que sur toutes les équipes. La première étape de la collecte des données a donc été de récupérer toutes les infos par équipe de chaque ligue pour obtenir le résultat suivant:</div>", unsafe_allow_html=True)
+    st.markdown("<div style='text-align: justify;'>Les données d'origine se présentent sous la forme de tableau selon différentes informations comme le tableau de la ligue, des tableaux sur les top joueurs ainsi que sur toutes les équipes. La première étape de la collecte des données a donc été de récupérer toutes les infos par équipe de chaque ligue pour obtenir le résultat suivant :</div>", unsafe_allow_html=True)
     st.write("")
     st.write(Ligue1_J9_raw.head(5))
     st.write("Soit un total de", len(Ligue1_J9_raw.columns), " colonnes.")
-    st.markdown("<div style='text-align: justify;'>Une fois toutes les ligues regroupées, une première gestion des noms des joueurs a été faite afin d'éviter les homonynes ou les noms mal écrits. Un travail sur les colonnes a ensuite été effectué avec la création d'une colonne Ligue et une sélection de colonne essentielle à l'étude. Ainsi, toutes les colonnes résultant d'un calcul (moyenne, total etc...) ont été retirées. Le résultat nous donne un jeu de données de cette dimension: </div>", unsafe_allow_html=True)
+    st.markdown("<div style='text-align: justify;'>Une fois toutes les ligues regroupées, une première gestion des noms des joueurs a été faite afin d'éviter les homonynes ou les noms mal écrits. Un travail sur les colonnes a ensuite été effectué avec la création d'une colonne Ligue et une sélection de colonne essentielle à l'étude. Ainsi, toutes les colonnes résultant d'un calcul (moyenne, total etc...) ont été retirées. Le résultat nous donne un jeu de données de cette dimension : </div>", unsafe_allow_html=True)
     st.write("")
     st.write(all_players_raw.shape)
     st.markdown("<div style='text-align: justify;'>Les colonnes de notre dataset peuvent être classées en deux catégories :</div>", unsafe_allow_html=True)
