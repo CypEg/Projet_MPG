@@ -55,7 +55,7 @@ st.sidebar.write("[LinkedIn](https://www.linkedin.com/in/cyprien-egly/)")
 if page == pages[0] : 
   st.write("## Présentation du projet")
   st.write("### Contexte")
-  st.markdown("<div style='text-align: justify;'>Le projet est basé sur l’application de jeu de fantasy football “MPG” MonPetitGazon. Le but de ce jeu est de gagner des matchs de football virtuel grâce aux performances réelles des joueurs et aux notes qui leurs sont attribués à l'issu de chaque rencontre. Le joueur obtenant le score le plus élevé après l'addition des notes de ses footballeurs est déclaré vainqueur.</div>", unsafe_allow_html=True)
+  st.markdown("<div style='text-align: justify;'>Le projet est basé sur l’application de jeu de fantasy football “MPG” MonPetitGazon. Le but de ce jeu est de gagner des matchs de football virtuel grâce aux performances réelles des joueurs et aux notes qui leurs sont attribuées à l'issu de chaque rencontre. Le joueur obtenant le score le plus élevé après l'addition des notes de ses footballeurs est déclaré vainqueur.</div>", unsafe_allow_html=True)
   st.write("### Objectifs")
   st.markdown("<div style='text-align: justify;'>L’objectif principal de ce projet est de proposer aux utilisateurs du jeu MPG des outils intelligents afin de les aider à constituer la meilleure équipe durant le mercato et à sélectionner la meilleure composition d'équipe avant chaque match.</div>", unsafe_allow_html=True)
 
@@ -122,11 +122,11 @@ all_players["%Titu"] = all_players["%Titu"] * 100
 if page == pages[1] :
     st.write("## Les Données")
     st.write("Les données utilisées lors de ce projet proviennent du site [MPG stats](https://www.mpgstats.fr/).")
-    st.markdown("<div style='text-align: justify;'>Les données d'origines se présentent sous la forme de tableau selon différentes information comme le tableau de la ligue, des tableaux sur les top joueurs ainsi que sur toutes les équipes. La première étape de la collecte des données a donc été de récupérer toutes les infos par équipe de chaque ligue pour obtenir le résultat suivant:</div>", unsafe_allow_html=True)
+    st.markdown("<div style='text-align: justify;'>Les données d'origine se présentent sous la forme de tableau selon différentes informations comme le tableau de la ligue, des tableaux sur les top joueurs ainsi que sur toutes les équipes. La première étape de la collecte des données a donc été de récupérer toutes les infos par équipe de chaque ligue pour obtenir le résultat suivant:</div>", unsafe_allow_html=True)
     st.write("")
     st.write(Ligue1_J9_raw.head(5))
     st.write("Soit un total de", len(Ligue1_J9_raw.columns), " colonnes.")
-    st.markdown("<div style='text-align: justify;'>Une fois toutes les ligues regroupées, une première gestion des noms des joueurs a été faite afin d'éviter les homonynes ou les noms mal écrits. Un travail sur les colonnes a ensuite été effectué avec la création d'une colonne Ligue et une sélection de colonne essentielle à l'étude. Ainsi, toutes les colonnes résultants d'un calcul (moyenne, total etc...) ont été retirées. Le résultat nous donne un jeu de données de cette dimension: </div>", unsafe_allow_html=True)
+    st.markdown("<div style='text-align: justify;'>Une fois toutes les ligues regroupées, une première gestion des noms des joueurs a été faite afin d'éviter les homonynes ou les noms mal écrits. Un travail sur les colonnes a ensuite été effectué avec la création d'une colonne Ligue et une sélection de colonne essentielle à l'étude. Ainsi, toutes les colonnes résultant d'un calcul (moyenne, total etc...) ont été retirées. Le résultat nous donne un jeu de données de cette dimension: </div>", unsafe_allow_html=True)
     st.write("")
     st.write(all_players_raw.shape)
     st.markdown("<div style='text-align: justify;'>Les colonnes de notre dataset peuvent être classées en deux catégories :</div>", unsafe_allow_html=True)
@@ -136,10 +136,10 @@ if page == pages[1] :
     st.markdown("<div style='text-align: justify;'>Ces colonnes quantitatives peuvent à leur tout être classées en deux catégories :</div>", unsafe_allow_html=True)
     st.markdown("- 12 colonnes relatives à la valeur et l’achat des joueurs")
     st.markdown("- 45 colonnes relatives à des statistiques de match")    
-    st.markdown("<div style='text-align: justify;'>Dû à ces distinctions, nos colonnes statistiques se retrouvent parfois avec un nombre élevé de valeurs manquantes.</div>", unsafe_allow_html=True)
+    st.markdown("<div style='text-align: justify;'>À cause de ces distinctions, nos colonnes statistiques se retrouvent parfois avec un nombre élevé de valeurs manquantes.</div>", unsafe_allow_html=True)
     if st.checkbox("Afficher les NA") :
         st.dataframe(all_players_raw.isna().sum())
-    st.markdown("<div style='text-align: justify;'>Elle représentent en fait des absences d'actions dans chaques catégories. Nous décidons alors de les remplacer par des zéros.</div>", unsafe_allow_html=True)
+    st.markdown("<div style='text-align: justify;'>Elle représentent en fait des absences d'actions dans chaque catégorie. Nous décidons alors de les remplacer par des zéros.</div>", unsafe_allow_html=True)
     st.markdown("<div style='text-align: justify;'>Enfin, la dernière étape de pré-processing de nos données a été la mise en valeur pourcentage de la colonne %Titu qui était à l'origine sous le format 0.00.</div>", unsafe_allow_html=True)
     st.markdown("<div style='text-align: justify;'>Notre jeu de données est enfin prêt pour effectuer diverses analyses.</div>", unsafe_allow_html=True)
     st.write("")
@@ -377,11 +377,11 @@ if page == pages[2] :
     st.markdown("*Ces graphes sont interractifs. Survolez un point pour plus de détails. Double-cliquez sur un poste de la légende pour montrer uniquement cette catégorie*.")
     
     
-    st.markdown("<div style='text-align: justify;'>L'idée de la relation entre le prix et la note des joueurs à l'air d'être globalement respectée sur ces visualisations. Pour en avoir le coeur net, on effectue un test Anova.</div>", unsafe_allow_html=True)
+    st.markdown("<div style='text-align: justify;'>L'idée de la relation entre le prix et la note des joueurs a l'air d'être globalement respectée sur ces visualisations. Pour en avoir le coeur net, on effectue un test Anova.</div>", unsafe_allow_html=True)
     st.write("")
     st.dataframe(df_result.style.format('{:.2f}'))
     st.write("")
-    st.markdown("<div style='text-align: justify;'>Pour terminer cette première approche, on s'intéresse un peu plus en détail sur les performances des top joueurs sur la saison actuelle et la saison passée.</div>", unsafe_allow_html=True)
+    st.markdown("<div style='text-align: justify;'>Pour terminer cette première approche, on s'intéresse un peu plus en détail aux performances des top joueurs sur la saison actuelle et la saison passée.</div>", unsafe_allow_html=True)
     st.markdown("*Ces performances concernent les joueurs de toutes les ligues*.")
     st.write("")
 
@@ -427,7 +427,7 @@ if page == pages[2] :
     plt.title("Comparaison des notes de la saison 2023/2024 des meilleurs attaquants de 2022/2023")   
     st.pyplot(fig)
 
-    st.markdown("<div style='text-align: justify;'>En conclusion de cette première approche, on offre à l'utilisateur un moyen visuel de détection des joueurs en vue de son mercato. L'interactivé du plotly lui permet facilement d'identifier les joueurs correspondants à ses besoins.</div>", unsafe_allow_html=True)
+    st.markdown("<div style='text-align: justify;'>En conclusion de cette première approche, on offre à l'utilisateur un moyen visuel de détection des joueurs en vue de son mercato. L'interactivé du plotly lui permet facilement d'identifier les joueurs correspondant à ses besoins.</div>", unsafe_allow_html=True)
 
 #%% Ajout du contenu de la page Visualisation 2ème approche
 # Études des corrélations des variables numériques
@@ -473,7 +473,7 @@ note_gk = note_gk.reset_index()
 note_gk = note_gk[note_gk["Note"] > 0.4].sort_values("Note", ascending=False)
 note_gk = note_gk.iloc[1:]
 
-#%% Mise en page de la page Visualisation 1ère approche
+#%% Mise en page de la page Visualisation 2ème approche
 if page == pages[3] :
     st.write("## Visualisation 2ème approche")
     st.markdown("<div style='text-align: justify;'>La deuxième approche de notre étude consiste à aller plus loin dans l'évaluation des joueurs en essayant de prédire leurs performances futures. Pour ce faire, nous avons mener une enquête préalable sur la corrélation entre chaque statistique afin de choisir les colonnes les plus importantes pour que notre modèle de machine learning puisse déterminer les notes des joueurs.</div>", unsafe_allow_html=True)
@@ -597,14 +597,14 @@ X_test_class[col_scaler] = scaler.transform(X_test_class[col_scaler])
 def prediction(classifier):
    if classifier == 'Régression Logistique':
      clf = LogisticRegression()
-   elif classifier == 'Arbre de Décission':
+   elif classifier == 'Arbre de Décision':
      clf = DecisionTreeClassifier()    
    elif classifier == 'Forêt Aléatoire':
      clf = RandomForestClassifier()    
    clf.fit(X_train_class, y_train_class)
    return clf
 
-choix = ['Régression Logistique', 'Arbre de Décission', 'Forêt Aléatoire']
+choix = ['Régression Logistique', 'Arbre de Décision', 'Forêt Aléatoire']
 
 def scores(clf, choice):
    if choice == 'Score':
@@ -622,7 +622,7 @@ if page == pages[5] :
     st.write("## Modélisation : Classification - 1ère partie")
     st.markdown("<div style='text-align: justify;'>Notre variable cible <b>note</b> pouvant également être considérée comme une variable qualitative, nous pouvons également appliquer les modèles de classification suivants :</div>", unsafe_allow_html=True)
     st.markdown("- la régression logistique")
-    st.markdown("- l'arbre de décission")
+    st.markdown("- l'arbre de décision")
     st.markdown("- la forêt aléatoire")    
     st.markdown('''<style>[data-testid="stMarkdownContainer"] ul{list-style-position: inside;}</style>''', unsafe_allow_html=True)
     st.markdown("<div style='text-align: justify;'>Dans un premier temps, nous décomposons notre variable cible en sept classes différentes selon les quantiles 1-3-5-7-9 de la <b>note</b> :</div>", unsafe_allow_html=True)
@@ -662,12 +662,12 @@ X_test = pd.get_dummies(X_test, columns = ["Poste"], dtype = 'int')
 X_train[col_scaler] = scaler.fit_transform(X_train[col_scaler])
 X_test[col_scaler] = scaler.transform(X_test[col_scaler])
 
-new_choix = ['Régression Logistique', 'Arbre de Décission']
+new_choix = ['Régression Logistique', 'Arbre de Décision']
 
 def new_prediction(classifier):
    if classifier == 'Régression Logistique':
      clf = LogisticRegression()
-   elif classifier == 'Arbre de Décission':
+   elif classifier == 'Arbre de Décision':
      clf = DecisionTreeClassifier()    
    elif classifier == 'Forêt Aléatoire':
      clf = RandomForestClassifier()    
@@ -687,13 +687,13 @@ def new_scores(clf, choice):
 #%% Mise en page de la page Modélisation : Classification - 2ème partie
 if page == pages[6] : 
   st.write("## Modélisation : Classification - 2ème partie")    
-  st.markdown("<div style='text-align: justify;'>Pour obtenir des résultats plus probant avec nos algorithmes de classification, on se résoud à réduire le nombre de classe de la manière suivante :</div>", unsafe_allow_html=True)
+  st.markdown("<div style='text-align: justify;'>Pour obtenir des résultats plus probants avec nos algorithmes de classification, on se résoud à réduire le nombre de classe de la manière suivante :</div>", unsafe_allow_html=True)
   st.markdown("- classe 0 : pas de matchs joués")
   st.markdown("- classe 1 : mauvais")
   st.markdown("- classe 3 : bon")
   st.markdown("- classe 5 : très bon")
   st.markdown("- classe 6 : exceptionnel")
-  st.markdown("<div style='text-align: justify;'>Au vue des résultats peu probant de la forêt aléatoire, on décide également de l'exclure de nos modèles.</div>", unsafe_allow_html=True)
+  st.markdown("<div style='text-align: justify;'>Au vu des résultats moins convaincants de la forêt aléatoire, on décide également de l'exclure de nos modèles.</div>", unsafe_allow_html=True)
 
   option = st.selectbox('Choix du modèle', new_choix)
   clf = new_prediction(option)
@@ -820,14 +820,14 @@ def mercato(liste_joueurs, ligue, budget, tactique, model):
 #%% Mise en page de la page Fonction : Mercato
 if page == pages[7] : 
   st.write("## Fonction : Mercato")
-  st.markdown("<div style='text-align: justify;'>L'objectif de notre fonction mercato est de constituer la meilleure équipe au meilleur prix. Elle se compose en trois étapes :</div>", unsafe_allow_html=True)
+  st.markdown("<div style='text-align: justify;'>L'objectif de notre fonction mercato est de constituer la meilleure équipe au meilleur prix. Elle se décompose en trois étapes :</div>", unsafe_allow_html=True)
   st.markdown("- Suggestion d'un effectif")
   st.markdown("- Évaluation du budget restant")
   st.markdown("- Suggestion de joueurs supplémentaires")
   st.markdown('''<style>[data-testid="stMarkdownContainer"] ul{list-style-position: inside;}</style>''', unsafe_allow_html=True)
-  st.markdown("<div style='text-align: justify;'>Notre première étape consiste à confier à notre modèle une liste de joueurs afin qu'il détermine quels joueurs vont performer dans les prochains matchs. Cette liste est ensuite triée selon la valeure d'enchère maximale du joueur pour récupérer ceux dont le prix est bon marché. À noter que l'on s'intéresse uniquement aux joueurs ayant joué au moins 75% des matchs.</div>", unsafe_allow_html=True)
+  st.markdown("<div style='text-align: justify;'>Notre première étape consiste à confier à notre modèle une liste de joueurs afin qu'il détermine quels joueurs vont performer dans les prochains matchs. Cette liste est ensuite triée selon la valeur d'enchère maximale du joueur pour récupérer ceux dont le prix est bon marché. À noter que l'on s'intéresse uniquement aux joueurs ayant joué au moins 75% des matchs.</div>", unsafe_allow_html=True)
   st.markdown("<div style='text-align: justify;'>Pour ce faire, notre fonction mercato prend cinq arguements :", unsafe_allow_html=True)
-  st.markdown("- Une liste globale de joueur")
+  st.markdown("- Une liste globale de joueurs")
   st.markdown("- Une ligue en particulier")
   st.markdown("- Un budget")
   st.markdown("- Une tactique")
@@ -841,7 +841,7 @@ if page == pages[7] :
   choix2 = ["Toutes", "Ligue 1", "Ligue 2", "Liga", "Premier League", "Serie A"]
   choix3 = [500]
   choix4 = ["4-4-2", "4-3-3", "4-2-1-3", "4-1-2-3", "3-5-2", "5-3-2"]
-  choix5 = ["Régression Logistique", "Arbre de Décission"]
+  choix5 = ["Régression Logistique", "Arbre de Décision"]
  
   with col1:
       option1 = st.selectbox('Liste de joueur', choix1)
@@ -1293,7 +1293,7 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 #%% Mise en page de la page Fonction : Composition d'équipe
 if page == pages[8] : 
   st.write("## Fonction : Composition d'équipe")
-  st.markdown("<div style='text-align: justify;'>Une fois l'effectif constituée, nous proposons à l'utilisateur une fonction lui permettant de choisir automatiquement ses titulaires pour le prochain match. Elle prend en arguement un effectif et une tactique.</div>", unsafe_allow_html=True)
+  st.markdown("<div style='text-align: justify;'>Une fois l'effectif constitué, nous proposons à l'utilisateur une fonction lui permettant de choisir automatiquement ses titulaires pour le prochain match. Elle prend en argument un effectif et une tactique.</div>", unsafe_allow_html=True)
   st.markdown("*Les effectifs montrés ici sont les résultats directs de notre fonction mercato, indépendamment du budget restant et des suggestions d'achats complémentaires pour la Ligue 1 et la Liga (dans un souci de fluidité de la présentation). Des enchères plus basses peuvent être necessaires pour obtenir certaines équipes*.")
   option1 = st.selectbox('Choix du modèle', new_choix)
   col1, col2, col3 = st.columns(3)
@@ -1321,17 +1321,17 @@ if page == pages[8] :
   # elif (option1 == 'Régression Logistique') & (option2 == "Toutes") & (option3 == "4-4-2") & (option4 == "5-3-2"): 
   #     compo = composition(all_442_LR, "5-3-2")
       
-  # if (option1 == 'Arbre de Décission') & (option2 == "Toutes") & (option3 == "4-4-2") & (option4 == "4-4-2"):
+  # if (option1 == 'Arbre de Décision') & (option2 == "Toutes") & (option3 == "4-4-2") & (option4 == "4-4-2"):
   #     compo = composition(all_442_DTC, "4-4-2")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Toutes") & (option3 == "4-4-2") & (option4 == "4-3-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Toutes") & (option3 == "4-4-2") & (option4 == "4-3-3"): 
   #     compo = composition(all_442_DTC, "4-3-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Toutes") & (option3 == "4-4-2") & (option4 == "4-1-2-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Toutes") & (option3 == "4-4-2") & (option4 == "4-1-2-3"): 
   #     compo = composition(all_442_DTC, "4-1-2-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Toutes") & (option3 == "4-4-2") & (option4 == "4-2-1-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Toutes") & (option3 == "4-4-2") & (option4 == "4-2-1-3"): 
   #     compo = composition(all_442_DTC, "4-2-1-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Toutes") & (option3 == "4-4-2") & (option4 == "3-5-2"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Toutes") & (option3 == "4-4-2") & (option4 == "3-5-2"): 
   #     compo = composition(all_442_DTC, "3-5-2")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Toutes") & (option3 == "4-4-2") & (option4 == "5-3-2"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Toutes") & (option3 == "4-4-2") & (option4 == "5-3-2"): 
   #     compo = composition(all_442_DTC, "5-3-2")
       
   # if (option1 == 'Régression Logistique') & (option2 == "Toutes") & (option3 == "4-3-3") & (option4 == "4-4-2"):
@@ -1347,17 +1347,17 @@ if page == pages[8] :
   # elif (option1 == 'Régression Logistique') & (option2 == "Toutes") & (option3 == "4-3-3") & (option4 == "5-3-2"): 
   #     compo = composition(all_433_LR, "5-3-2")
       
-  # if (option1 == 'Arbre de Décission') & (option2 == "Toutes") & (option3 == "4-3-3") & (option4 == "4-4-2"):
+  # if (option1 == 'Arbre de Décision') & (option2 == "Toutes") & (option3 == "4-3-3") & (option4 == "4-4-2"):
   #     compo = composition(all_433_DTC, "4-4-2")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Toutes") & (option3 == "4-3-3") & (option4 == "4-3-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Toutes") & (option3 == "4-3-3") & (option4 == "4-3-3"): 
   #     compo = composition(all_433_DTC, "4-3-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Toutes") & (option3 == "4-3-3") & (option4 == "4-1-2-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Toutes") & (option3 == "4-3-3") & (option4 == "4-1-2-3"): 
   #     compo = composition(all_433_DTC, "4-1-2-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Toutes") & (option3 == "4-3-3") & (option4 == "4-2-1-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Toutes") & (option3 == "4-3-3") & (option4 == "4-2-1-3"): 
   #     compo = composition(all_433_DTC, "4-2-1-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Toutes") & (option3 == "4-3-3") & (option4 == "3-5-2"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Toutes") & (option3 == "4-3-3") & (option4 == "3-5-2"): 
   #     compo = composition(all_433_DTC, "3-5-2")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Toutes") & (option3 == "4-3-3") & (option4 == "5-3-2"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Toutes") & (option3 == "4-3-3") & (option4 == "5-3-2"): 
   #     compo = composition(all_433_DTC, "5-3-2")     
       
   # if (option1 == 'Régression Logistique') & (option2 == "Toutes") & (option3 == "4-1-2-3") & (option4 == "4-4-2"):
@@ -1373,17 +1373,17 @@ if page == pages[8] :
   # elif (option1 == 'Régression Logistique') & (option2 == "Toutes") & (option3 == "4-1-2-3") & (option4 == "5-3-2"): 
   #     compo = composition(all_4123_LR, "5-3-2")
       
-  # if (option1 == 'Arbre de Décission') & (option2 == "Toutes") & (option3 == "4-1-2-3") & (option4 == "4-4-2"):
+  # if (option1 == 'Arbre de Décision') & (option2 == "Toutes") & (option3 == "4-1-2-3") & (option4 == "4-4-2"):
   #     compo = composition(all_4123_DTC, "4-4-2")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Toutes") & (option3 == "4-1-2-3") & (option4 == "4-3-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Toutes") & (option3 == "4-1-2-3") & (option4 == "4-3-3"): 
   #     compo = composition(all_4123_DTC, "4-3-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Toutes") & (option3 == "4-1-2-3") & (option4 == "4-1-2-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Toutes") & (option3 == "4-1-2-3") & (option4 == "4-1-2-3"): 
   #     compo = composition(all_4123_DTC, "4-1-2-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Toutes") & (option3 == "4-1-2-3") & (option4 == "4-2-1-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Toutes") & (option3 == "4-1-2-3") & (option4 == "4-2-1-3"): 
   #     compo = composition(all_4123_DTC, "4-2-1-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Toutes") & (option3 == "4-1-2-3") & (option4 == "3-5-2"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Toutes") & (option3 == "4-1-2-3") & (option4 == "3-5-2"): 
   #     compo = composition(all_4123_DTC, "3-5-2")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Toutes") & (option3 == "4-1-2-3") & (option4 == "5-3-2"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Toutes") & (option3 == "4-1-2-3") & (option4 == "5-3-2"): 
   #     compo = composition(all_4123_DTC, "5-3-2")
 
   # if (option1 == 'Régression Logistique') & (option2 == "Toutes") & (option3 == "4-2-1-3") & (option4 == "4-4-2"):
@@ -1399,17 +1399,17 @@ if page == pages[8] :
   # elif (option1 == 'Régression Logistique') & (option2 == "Toutes") & (option3 == "4-2-1-3") & (option4 == "5-3-2"): 
   #     compo = composition(all_4213_LR, "5-3-2")
       
-  # if (option1 == 'Arbre de Décission') & (option2 == "Toutes") & (option3 == "4-2-1-3") & (option4 == "4-4-2"):
+  # if (option1 == 'Arbre de Décision') & (option2 == "Toutes") & (option3 == "4-2-1-3") & (option4 == "4-4-2"):
   #     compo = composition(all_4213_DTC, "4-4-2")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Toutes") & (option3 == "4-2-1-3") & (option4 == "4-3-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Toutes") & (option3 == "4-2-1-3") & (option4 == "4-3-3"): 
   #     compo = composition(all_4213_DTC, "4-3-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Toutes") & (option3 == "4-2-1-3") & (option4 == "4-1-2-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Toutes") & (option3 == "4-2-1-3") & (option4 == "4-1-2-3"): 
   #     compo = composition(all_4213_DTC, "4-1-2-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Toutes") & (option3 == "4-2-1-3") & (option4 == "4-2-1-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Toutes") & (option3 == "4-2-1-3") & (option4 == "4-2-1-3"): 
   #     compo = composition(all_4213_DTC, "4-2-1-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Toutes") & (option3 == "4-2-1-3") & (option4 == "3-5-2"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Toutes") & (option3 == "4-2-1-3") & (option4 == "3-5-2"): 
   #     compo = composition(all_4213_DTC, "3-5-2")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Toutes") & (option3 == "4-2-1-3") & (option4 == "5-3-2"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Toutes") & (option3 == "4-2-1-3") & (option4 == "5-3-2"): 
   #     compo = composition(all_4213_DTC, "5-3-2")
 
   # if (option1 == 'Régression Logistique') & (option2 == "Toutes") & (option3 == "3-5-2") & (option4 == "4-4-2"):
@@ -1425,17 +1425,17 @@ if page == pages[8] :
   # elif (option1 == 'Régression Logistique') & (option2 == "Toutes") & (option3 == "3-5-2") & (option4 == "5-3-2"): 
   #     compo = composition(all_352_LR, "5-3-2")
       
-  # if (option1 == 'Arbre de Décission') & (option2 == "Toutes") & (option3 == "3-5-2") & (option4 == "4-4-2"):
+  # if (option1 == 'Arbre de Décision') & (option2 == "Toutes") & (option3 == "3-5-2") & (option4 == "4-4-2"):
   #     compo = composition(all_352_DTC, "4-4-2")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Toutes") & (option3 == "3-5-2") & (option4 == "4-3-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Toutes") & (option3 == "3-5-2") & (option4 == "4-3-3"): 
   #     compo = composition(all_352_DTC, "4-3-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Toutes") & (option3 == "3-5-2") & (option4 == "4-1-2-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Toutes") & (option3 == "3-5-2") & (option4 == "4-1-2-3"): 
   #     compo = composition(all_352_DTC, "4-1-2-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Toutes") & (option3 == "3-5-2") & (option4 == "4-2-1-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Toutes") & (option3 == "3-5-2") & (option4 == "4-2-1-3"): 
   #     compo = composition(all_352_DTC, "4-2-1-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Toutes") & (option3 == "3-5-2") & (option4 == "3-5-2"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Toutes") & (option3 == "3-5-2") & (option4 == "3-5-2"): 
   #     compo = composition(all_352_DTC, "3-5-2")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Toutes") & (option3 == "3-5-2") & (option4 == "5-3-2"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Toutes") & (option3 == "3-5-2") & (option4 == "5-3-2"): 
   #     compo = composition(all_352_DTC, "5-3-2")
 
   # if (option1 == 'Régression Logistique') & (option2 == "Toutes") & (option3 == "5-3-2") & (option4 == "4-4-2"):
@@ -1451,17 +1451,17 @@ if page == pages[8] :
   # elif (option1 == 'Régression Logistique') & (option2 == "Toutes") & (option3 == "5-3-2") & (option4 == "5-3-2"): 
   #     compo = composition(all_532_LR, "5-3-2")
       
-  # if (option1 == 'Arbre de Décission') & (option2 == "Toutes") & (option3 == "5-3-2") & (option4 == "4-4-2"):
+  # if (option1 == 'Arbre de Décision') & (option2 == "Toutes") & (option3 == "5-3-2") & (option4 == "4-4-2"):
   #     compo = composition(all_532_DTC, "4-4-2")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Toutes") & (option3 == "5-3-2") & (option4 == "4-3-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Toutes") & (option3 == "5-3-2") & (option4 == "4-3-3"): 
   #     compo = composition(all_532_DTC, "4-3-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Toutes") & (option3 == "5-3-2") & (option4 == "4-1-2-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Toutes") & (option3 == "5-3-2") & (option4 == "4-1-2-3"): 
   #     compo = composition(all_532_DTC, "4-1-2-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Toutes") & (option3 == "5-3-2") & (option4 == "4-2-1-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Toutes") & (option3 == "5-3-2") & (option4 == "4-2-1-3"): 
   #     compo = composition(all_532_DTC, "4-2-1-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Toutes") & (option3 == "5-3-2") & (option4 == "3-5-2"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Toutes") & (option3 == "5-3-2") & (option4 == "3-5-2"): 
   #     compo = composition(all_532_DTC, "3-5-2")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Toutes") & (option3 == "5-3-2") & (option4 == "5-3-2"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Toutes") & (option3 == "5-3-2") & (option4 == "5-3-2"): 
   #     compo = composition(all_532_DTC, "5-3-2")             
 
   if (option1 == 'Régression Logistique') & (option2 == "Ligue 1") & (option3 == "4-4-2") & (option4 == "4-4-2"):
@@ -1477,17 +1477,17 @@ if page == pages[8] :
   elif (option1 == 'Régression Logistique') & (option2 == "Ligue 1") & (option3 == "4-4-2") & (option4 == "5-3-2"): 
       compo = composition(ligue1_442_LR, "5-3-2")
       
-  if (option1 == 'Arbre de Décission') & (option2 == "Ligue 1") & (option3 == "4-4-2") & (option4 == "4-4-2"):
+  if (option1 == 'Arbre de Décision') & (option2 == "Ligue 1") & (option3 == "4-4-2") & (option4 == "4-4-2"):
       compo = composition(ligue1_442_DTC, "4-4-2")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 1") & (option3 == "4-4-2") & (option4 == "4-3-3"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 1") & (option3 == "4-4-2") & (option4 == "4-3-3"): 
       compo = composition(ligue1_442_DTC, "4-3-3")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 1") & (option3 == "4-4-2") & (option4 == "4-1-2-3"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 1") & (option3 == "4-4-2") & (option4 == "4-1-2-3"): 
       compo = composition(ligue1_442_DTC, "4-1-2-3")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 1") & (option3 == "4-4-2") & (option4 == "4-2-1-3"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 1") & (option3 == "4-4-2") & (option4 == "4-2-1-3"): 
       compo = composition(ligue1_442_DTC, "4-2-1-3")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 1") & (option3 == "4-4-2") & (option4 == "3-5-2"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 1") & (option3 == "4-4-2") & (option4 == "3-5-2"): 
       compo = composition(ligue1_442_DTC, "3-5-2")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 1") & (option3 == "4-4-2") & (option4 == "5-3-2"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 1") & (option3 == "4-4-2") & (option4 == "5-3-2"): 
       compo = composition(ligue1_442_DTC, "5-3-2")
       
   if (option1 == 'Régression Logistique') & (option2 == "Ligue 1") & (option3 == "4-3-3") & (option4 == "4-4-2"):
@@ -1503,17 +1503,17 @@ if page == pages[8] :
   elif (option1 == 'Régression Logistique') & (option2 == "Ligue 1") & (option3 == "4-3-3") & (option4 == "5-3-2"): 
       compo = composition(ligue1_433_LR, "5-3-2")
       
-  if (option1 == 'Arbre de Décission') & (option2 == "Ligue 1") & (option3 == "4-3-3") & (option4 == "4-4-2"):
+  if (option1 == 'Arbre de Décision') & (option2 == "Ligue 1") & (option3 == "4-3-3") & (option4 == "4-4-2"):
       compo = composition(ligue1_433_DTC, "4-4-2")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 1") & (option3 == "4-3-3") & (option4 == "4-3-3"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 1") & (option3 == "4-3-3") & (option4 == "4-3-3"): 
       compo = composition(ligue1_433_DTC, "4-3-3")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 1") & (option3 == "4-3-3") & (option4 == "4-1-2-3"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 1") & (option3 == "4-3-3") & (option4 == "4-1-2-3"): 
       compo = composition(ligue1_433_DTC, "4-1-2-3")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 1") & (option3 == "4-3-3") & (option4 == "4-2-1-3"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 1") & (option3 == "4-3-3") & (option4 == "4-2-1-3"): 
       compo = composition(ligue1_433_DTC, "4-2-1-3")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 1") & (option3 == "4-3-3") & (option4 == "3-5-2"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 1") & (option3 == "4-3-3") & (option4 == "3-5-2"): 
       compo = composition(ligue1_433_DTC, "3-5-2")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 1") & (option3 == "4-3-3") & (option4 == "5-3-2"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 1") & (option3 == "4-3-3") & (option4 == "5-3-2"): 
       compo = composition(ligue1_433_DTC, "5-3-2")     
       
   if (option1 == 'Régression Logistique') & (option2 == "Ligue 1") & (option3 == "4-1-2-3") & (option4 == "4-4-2"):
@@ -1529,17 +1529,17 @@ if page == pages[8] :
   elif (option1 == 'Régression Logistique') & (option2 == "Ligue 1") & (option3 == "4-1-2-3") & (option4 == "5-3-2"): 
       compo = composition(ligue1_4123_LR, "5-3-2")
       
-  if (option1 == 'Arbre de Décission') & (option2 == "Ligue 1") & (option3 == "4-1-2-3") & (option4 == "4-4-2"):
+  if (option1 == 'Arbre de Décision') & (option2 == "Ligue 1") & (option3 == "4-1-2-3") & (option4 == "4-4-2"):
       compo = composition(ligue1_4123_DTC, "4-4-2")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 1") & (option3 == "4-1-2-3") & (option4 == "4-3-3"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 1") & (option3 == "4-1-2-3") & (option4 == "4-3-3"): 
       compo = composition(ligue1_4123_DTC, "4-3-3")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 1") & (option3 == "4-1-2-3") & (option4 == "4-1-2-3"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 1") & (option3 == "4-1-2-3") & (option4 == "4-1-2-3"): 
       compo = composition(ligue1_4123_DTC, "4-1-2-3")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 1") & (option3 == "4-1-2-3") & (option4 == "4-2-1-3"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 1") & (option3 == "4-1-2-3") & (option4 == "4-2-1-3"): 
       compo = composition(ligue1_4123_DTC, "4-2-1-3")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 1") & (option3 == "4-1-2-3") & (option4 == "3-5-2"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 1") & (option3 == "4-1-2-3") & (option4 == "3-5-2"): 
       compo = composition(ligue1_4123_DTC, "3-5-2")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 1") & (option3 == "4-1-2-3") & (option4 == "5-3-2"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 1") & (option3 == "4-1-2-3") & (option4 == "5-3-2"): 
       compo = composition(ligue1_4123_DTC, "5-3-2")
 
   if (option1 == 'Régression Logistique') & (option2 == "Ligue 1") & (option3 == "4-2-1-3") & (option4 == "4-4-2"):
@@ -1555,17 +1555,17 @@ if page == pages[8] :
   elif (option1 == 'Régression Logistique') & (option2 == "Ligue 1") & (option3 == "4-2-1-3") & (option4 == "5-3-2"): 
       compo = composition(ligue1_4213_LR, "5-3-2")
       
-  if (option1 == 'Arbre de Décission') & (option2 == "Ligue 1") & (option3 == "4-2-1-3") & (option4 == "4-4-2"):
+  if (option1 == 'Arbre de Décision') & (option2 == "Ligue 1") & (option3 == "4-2-1-3") & (option4 == "4-4-2"):
       compo = composition(ligue1_4213_DTC, "4-4-2")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 1") & (option3 == "4-2-1-3") & (option4 == "4-3-3"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 1") & (option3 == "4-2-1-3") & (option4 == "4-3-3"): 
       compo = composition(ligue1_4213_DTC, "4-3-3")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 1") & (option3 == "4-2-1-3") & (option4 == "4-1-2-3"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 1") & (option3 == "4-2-1-3") & (option4 == "4-1-2-3"): 
       compo = composition(ligue1_4213_DTC, "4-1-2-3")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 1") & (option3 == "4-2-1-3") & (option4 == "4-2-1-3"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 1") & (option3 == "4-2-1-3") & (option4 == "4-2-1-3"): 
       compo = composition(ligue1_4213_DTC, "4-2-1-3")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 1") & (option3 == "4-2-1-3") & (option4 == "3-5-2"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 1") & (option3 == "4-2-1-3") & (option4 == "3-5-2"): 
       compo = composition(ligue1_4213_DTC, "3-5-2")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 1") & (option3 == "4-2-1-3") & (option4 == "5-3-2"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 1") & (option3 == "4-2-1-3") & (option4 == "5-3-2"): 
       compo = composition(ligue1_4213_DTC, "5-3-2")
 
   if (option1 == 'Régression Logistique') & (option2 == "Ligue 1") & (option3 == "3-5-2") & (option4 == "4-4-2"):
@@ -1581,17 +1581,17 @@ if page == pages[8] :
   elif (option1 == 'Régression Logistique') & (option2 == "Ligue 1") & (option3 == "3-5-2") & (option4 == "5-3-2"): 
       compo = composition(ligue1_352_LR, "5-3-2")
       
-  if (option1 == 'Arbre de Décission') & (option2 == "Ligue 1") & (option3 == "3-5-2") & (option4 == "4-4-2"):
+  if (option1 == 'Arbre de Décision') & (option2 == "Ligue 1") & (option3 == "3-5-2") & (option4 == "4-4-2"):
       compo = composition(ligue1_352_DTC, "4-4-2")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 1") & (option3 == "3-5-2") & (option4 == "4-3-3"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 1") & (option3 == "3-5-2") & (option4 == "4-3-3"): 
       compo = composition(ligue1_352_DTC, "4-3-3")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 1") & (option3 == "3-5-2") & (option4 == "4-1-2-3"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 1") & (option3 == "3-5-2") & (option4 == "4-1-2-3"): 
       compo = composition(ligue1_352_DTC, "4-1-2-3")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 1") & (option3 == "3-5-2") & (option4 == "4-2-1-3"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 1") & (option3 == "3-5-2") & (option4 == "4-2-1-3"): 
       compo = composition(ligue1_352_DTC, "4-2-1-3")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 1") & (option3 == "3-5-2") & (option4 == "3-5-2"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 1") & (option3 == "3-5-2") & (option4 == "3-5-2"): 
       compo = composition(ligue1_352_DTC, "3-5-2")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 1") & (option3 == "3-5-2") & (option4 == "5-3-2"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 1") & (option3 == "3-5-2") & (option4 == "5-3-2"): 
       compo = composition(ligue1_352_DTC, "5-3-2")
 
   if (option1 == 'Régression Logistique') & (option2 == "Ligue 1") & (option3 == "5-3-2") & (option4 == "4-4-2"):
@@ -1607,17 +1607,17 @@ if page == pages[8] :
   elif (option1 == 'Régression Logistique') & (option2 == "Ligue 1") & (option3 == "5-3-2") & (option4 == "5-3-2"): 
       compo = composition(ligue1_532_LR, "5-3-2")
       
-  if (option1 == 'Arbre de Décission') & (option2 == "Ligue 1") & (option3 == "5-3-2") & (option4 == "4-4-2"):
+  if (option1 == 'Arbre de Décision') & (option2 == "Ligue 1") & (option3 == "5-3-2") & (option4 == "4-4-2"):
       compo = composition(ligue1_532_DTC, "4-4-2")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 1") & (option3 == "5-3-2") & (option4 == "4-3-3"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 1") & (option3 == "5-3-2") & (option4 == "4-3-3"): 
       compo = composition(ligue1_532_DTC, "4-3-3")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 1") & (option3 == "5-3-2") & (option4 == "4-1-2-3"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 1") & (option3 == "5-3-2") & (option4 == "4-1-2-3"): 
       compo = composition(ligue1_532_DTC, "4-1-2-3")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 1") & (option3 == "5-3-2") & (option4 == "4-2-1-3"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 1") & (option3 == "5-3-2") & (option4 == "4-2-1-3"): 
       compo = composition(ligue1_532_DTC, "4-2-1-3")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 1") & (option3 == "5-3-2") & (option4 == "3-5-2"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 1") & (option3 == "5-3-2") & (option4 == "3-5-2"): 
       compo = composition(ligue1_532_DTC, "3-5-2")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 1") & (option3 == "5-3-2") & (option4 == "5-3-2"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 1") & (option3 == "5-3-2") & (option4 == "5-3-2"): 
       compo = composition(ligue1_532_DTC, "5-3-2")
       
   # if (option1 == 'Régression Logistique') & (option2 == "Ligue 2") & (option3 == "4-4-2") & (option4 == "4-4-2"):
@@ -1633,17 +1633,17 @@ if page == pages[8] :
   # elif (option1 == 'Régression Logistique') & (option2 == "Ligue 2") & (option3 == "4-4-2") & (option4 == "5-3-2"): 
   #     compo = composition(ligue2_442_LR, "5-3-2")
       
-  # if (option1 == 'Arbre de Décission') & (option2 == "Ligue 2") & (option3 == "4-4-2") & (option4 == "4-4-2"):
+  # if (option1 == 'Arbre de Décision') & (option2 == "Ligue 2") & (option3 == "4-4-2") & (option4 == "4-4-2"):
   #     compo = composition(ligue2_442_DTC, "4-4-2")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 2") & (option3 == "4-4-2") & (option4 == "4-3-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 2") & (option3 == "4-4-2") & (option4 == "4-3-3"): 
   #     compo = composition(ligue2_442_DTC, "4-3-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 2") & (option3 == "4-4-2") & (option4 == "4-1-2-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 2") & (option3 == "4-4-2") & (option4 == "4-1-2-3"): 
   #     compo = composition(ligue2_442_DTC, "4-1-2-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 2") & (option3 == "4-4-2") & (option4 == "4-2-1-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 2") & (option3 == "4-4-2") & (option4 == "4-2-1-3"): 
   #     compo = composition(ligue2_442_DTC, "4-2-1-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 2") & (option3 == "4-4-2") & (option4 == "3-5-2"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 2") & (option3 == "4-4-2") & (option4 == "3-5-2"): 
   #     compo = composition(ligue2_442_DTC, "3-5-2")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 2") & (option3 == "4-4-2") & (option4 == "5-3-2"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 2") & (option3 == "4-4-2") & (option4 == "5-3-2"): 
   #     compo = composition(ligue2_442_DTC, "5-3-2")
       
   # if (option1 == 'Régression Logistique') & (option2 == "Ligue 2") & (option3 == "4-3-3") & (option4 == "4-4-2"):
@@ -1659,17 +1659,17 @@ if page == pages[8] :
   # elif (option1 == 'Régression Logistique') & (option2 == "Ligue 2") & (option3 == "4-3-3") & (option4 == "5-3-2"): 
   #     compo = composition(ligue2_433_LR, "5-3-2")
       
-  # if (option1 == 'Arbre de Décission') & (option2 == "Ligue 2") & (option3 == "4-3-3") & (option4 == "4-4-2"):
+  # if (option1 == 'Arbre de Décision') & (option2 == "Ligue 2") & (option3 == "4-3-3") & (option4 == "4-4-2"):
   #     compo = composition(ligue2_433_DTC, "4-4-2")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 2") & (option3 == "4-3-3") & (option4 == "4-3-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 2") & (option3 == "4-3-3") & (option4 == "4-3-3"): 
   #     compo = composition(ligue2_433_DTC, "4-3-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 2") & (option3 == "4-3-3") & (option4 == "4-1-2-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 2") & (option3 == "4-3-3") & (option4 == "4-1-2-3"): 
   #     compo = composition(ligue2_433_DTC, "4-1-2-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 2") & (option3 == "4-3-3") & (option4 == "4-2-1-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 2") & (option3 == "4-3-3") & (option4 == "4-2-1-3"): 
   #     compo = composition(ligue2_433_DTC, "4-2-1-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 2") & (option3 == "4-3-3") & (option4 == "3-5-2"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 2") & (option3 == "4-3-3") & (option4 == "3-5-2"): 
   #     compo = composition(ligue2_433_DTC, "3-5-2")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 2") & (option3 == "4-3-3") & (option4 == "5-3-2"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 2") & (option3 == "4-3-3") & (option4 == "5-3-2"): 
   #     compo = composition(ligue2_433_DTC, "5-3-2")     
       
   # if (option1 == 'Régression Logistique') & (option2 == "Ligue 2") & (option3 == "4-1-2-3") & (option4 == "4-4-2"):
@@ -1685,17 +1685,17 @@ if page == pages[8] :
   # elif (option1 == 'Régression Logistique') & (option2 == "Ligue 2") & (option3 == "4-1-2-3") & (option4 == "5-3-2"): 
   #     compo = composition(ligue2_4123_LR, "5-3-2")
       
-  # if (option1 == 'Arbre de Décission') & (option2 == "Ligue 2") & (option3 == "4-1-2-3") & (option4 == "4-4-2"):
+  # if (option1 == 'Arbre de Décision') & (option2 == "Ligue 2") & (option3 == "4-1-2-3") & (option4 == "4-4-2"):
   #     compo = composition(ligue2_4123_DTC, "4-4-2")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 2") & (option3 == "4-1-2-3") & (option4 == "4-3-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 2") & (option3 == "4-1-2-3") & (option4 == "4-3-3"): 
   #     compo = composition(ligue2_4123_DTC, "4-3-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 2") & (option3 == "4-1-2-3") & (option4 == "4-1-2-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 2") & (option3 == "4-1-2-3") & (option4 == "4-1-2-3"): 
   #     compo = composition(ligue2_4123_DTC, "4-1-2-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 2") & (option3 == "4-1-2-3") & (option4 == "4-2-1-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 2") & (option3 == "4-1-2-3") & (option4 == "4-2-1-3"): 
   #     compo = composition(ligue2_4123_DTC, "4-2-1-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 2") & (option3 == "4-1-2-3") & (option4 == "3-5-2"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 2") & (option3 == "4-1-2-3") & (option4 == "3-5-2"): 
   #     compo = composition(ligue2_4123_DTC, "3-5-2")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 2") & (option3 == "4-1-2-3") & (option4 == "5-3-2"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 2") & (option3 == "4-1-2-3") & (option4 == "5-3-2"): 
   #     compo = composition(ligue2_4123_DTC, "5-3-2")
 
   # if (option1 == 'Régression Logistique') & (option2 == "Ligue 2") & (option3 == "4-2-1-3") & (option4 == "4-4-2"):
@@ -1711,17 +1711,17 @@ if page == pages[8] :
   # elif (option1 == 'Régression Logistique') & (option2 == "Ligue 2") & (option3 == "4-2-1-3") & (option4 == "5-3-2"): 
   #     compo = composition(ligue2_4213_LR, "5-3-2")
       
-  # if (option1 == 'Arbre de Décission') & (option2 == "Ligue 2") & (option3 == "4-2-1-3") & (option4 == "4-4-2"):
+  # if (option1 == 'Arbre de Décision') & (option2 == "Ligue 2") & (option3 == "4-2-1-3") & (option4 == "4-4-2"):
   #     compo = composition(ligue2_4213_DTC, "4-4-2")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 2") & (option3 == "4-2-1-3") & (option4 == "4-3-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 2") & (option3 == "4-2-1-3") & (option4 == "4-3-3"): 
   #     compo = composition(ligue2_4213_DTC, "4-3-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 2") & (option3 == "4-2-1-3") & (option4 == "4-1-2-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 2") & (option3 == "4-2-1-3") & (option4 == "4-1-2-3"): 
   #     compo = composition(ligue2_4213_DTC, "4-1-2-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 2") & (option3 == "4-2-1-3") & (option4 == "4-2-1-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 2") & (option3 == "4-2-1-3") & (option4 == "4-2-1-3"): 
   #     compo = composition(ligue2_4213_DTC, "4-2-1-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 2") & (option3 == "4-2-1-3") & (option4 == "3-5-2"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 2") & (option3 == "4-2-1-3") & (option4 == "3-5-2"): 
   #     compo = composition(ligue2_4213_DTC, "3-5-2")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 2") & (option3 == "4-2-1-3") & (option4 == "5-3-2"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 2") & (option3 == "4-2-1-3") & (option4 == "5-3-2"): 
   #     compo = composition(ligue2_4213_DTC, "5-3-2")
 
   # if (option1 == 'Régression Logistique') & (option2 == "Ligue 2") & (option3 == "3-5-2") & (option4 == "4-4-2"):
@@ -1737,17 +1737,17 @@ if page == pages[8] :
   # elif (option1 == 'Régression Logistique') & (option2 == "Ligue 2") & (option3 == "3-5-2") & (option4 == "5-3-2"): 
   #     compo = composition(ligue2_352_LR, "5-3-2")
       
-  # if (option1 == 'Arbre de Décission') & (option2 == "Ligue 2") & (option3 == "3-5-2") & (option4 == "4-4-2"):
+  # if (option1 == 'Arbre de Décision') & (option2 == "Ligue 2") & (option3 == "3-5-2") & (option4 == "4-4-2"):
   #     compo = composition(ligue2_352_DTC, "4-4-2")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 2") & (option3 == "3-5-2") & (option4 == "4-3-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 2") & (option3 == "3-5-2") & (option4 == "4-3-3"): 
   #     compo = composition(ligue2_352_DTC, "4-3-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 2") & (option3 == "3-5-2") & (option4 == "4-1-2-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 2") & (option3 == "3-5-2") & (option4 == "4-1-2-3"): 
   #     compo = composition(ligue2_352_DTC, "4-1-2-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 2") & (option3 == "3-5-2") & (option4 == "4-2-1-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 2") & (option3 == "3-5-2") & (option4 == "4-2-1-3"): 
   #     compo = composition(ligue2_352_DTC, "4-2-1-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 2") & (option3 == "3-5-2") & (option4 == "3-5-2"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 2") & (option3 == "3-5-2") & (option4 == "3-5-2"): 
   #     compo = composition(ligue2_352_DTC, "3-5-2")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 2") & (option3 == "3-5-2") & (option4 == "5-3-2"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 2") & (option3 == "3-5-2") & (option4 == "5-3-2"): 
   #     compo = composition(ligue2_352_DTC, "5-3-2")
 
   # if (option1 == 'Régression Logistique') & (option2 == "Ligue 2") & (option3 == "5-3-2") & (option4 == "4-4-2"):
@@ -1763,17 +1763,17 @@ if page == pages[8] :
   # elif (option1 == 'Régression Logistique') & (option2 == "Ligue 2") & (option3 == "5-3-2") & (option4 == "5-3-2"): 
   #     compo = composition(ligue2_532_LR, "5-3-2")
       
-  # if (option1 == 'Arbre de Décission') & (option2 == "Ligue 2") & (option3 == "5-3-2") & (option4 == "4-4-2"):
+  # if (option1 == 'Arbre de Décision') & (option2 == "Ligue 2") & (option3 == "5-3-2") & (option4 == "4-4-2"):
   #     compo = composition(ligue2_532_DTC, "4-4-2")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 2") & (option3 == "5-3-2") & (option4 == "4-3-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 2") & (option3 == "5-3-2") & (option4 == "4-3-3"): 
   #     compo = composition(ligue2_532_DTC, "4-3-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 2") & (option3 == "5-3-2") & (option4 == "4-1-2-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 2") & (option3 == "5-3-2") & (option4 == "4-1-2-3"): 
   #     compo = composition(ligue2_532_DTC, "4-1-2-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 2") & (option3 == "5-3-2") & (option4 == "4-2-1-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 2") & (option3 == "5-3-2") & (option4 == "4-2-1-3"): 
   #     compo = composition(ligue2_532_DTC, "4-2-1-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 2") & (option3 == "5-3-2") & (option4 == "3-5-2"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 2") & (option3 == "5-3-2") & (option4 == "3-5-2"): 
   #     compo = composition(ligue2_532_DTC, "3-5-2")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Ligue 2") & (option3 == "5-3-2") & (option4 == "5-3-2"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Ligue 2") & (option3 == "5-3-2") & (option4 == "5-3-2"): 
   #     compo = composition(ligue2_532_DTC, "5-3-2")
 
   if (option1 == 'Régression Logistique') & (option2 == "Liga") & (option3 == "4-4-2") & (option4 == "4-4-2"):
@@ -1789,17 +1789,17 @@ if page == pages[8] :
   elif (option1 == 'Régression Logistique') & (option2 == "Liga") & (option3 == "4-4-2") & (option4 == "5-3-2"): 
       compo = composition(liga_442_LR, "5-3-2")
       
-  if (option1 == 'Arbre de Décission') & (option2 == "Liga") & (option3 == "4-4-2") & (option4 == "4-4-2"):
+  if (option1 == 'Arbre de Décision') & (option2 == "Liga") & (option3 == "4-4-2") & (option4 == "4-4-2"):
       compo = composition(liga_442_DTC, "4-4-2")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Liga") & (option3 == "4-4-2") & (option4 == "4-3-3"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Liga") & (option3 == "4-4-2") & (option4 == "4-3-3"): 
       compo = composition(liga_442_DTC, "4-3-3")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Liga") & (option3 == "4-4-2") & (option4 == "4-1-2-3"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Liga") & (option3 == "4-4-2") & (option4 == "4-1-2-3"): 
       compo = composition(liga_442_DTC, "4-1-2-3")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Liga") & (option3 == "4-4-2") & (option4 == "4-2-1-3"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Liga") & (option3 == "4-4-2") & (option4 == "4-2-1-3"): 
       compo = composition(liga_442_DTC, "4-2-1-3")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Liga") & (option3 == "4-4-2") & (option4 == "3-5-2"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Liga") & (option3 == "4-4-2") & (option4 == "3-5-2"): 
       compo = composition(liga_442_DTC, "3-5-2")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Liga") & (option3 == "4-4-2") & (option4 == "5-3-2"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Liga") & (option3 == "4-4-2") & (option4 == "5-3-2"): 
       compo = composition(liga_442_DTC, "5-3-2")
       
   if (option1 == 'Régression Logistique') & (option2 == "Liga") & (option3 == "4-3-3") & (option4 == "4-4-2"):
@@ -1815,17 +1815,17 @@ if page == pages[8] :
   elif (option1 == 'Régression Logistique') & (option2 == "Liga") & (option3 == "4-3-3") & (option4 == "5-3-2"): 
       compo = composition(liga_433_LR, "5-3-2")
       
-  if (option1 == 'Arbre de Décission') & (option2 == "Liga") & (option3 == "4-3-3") & (option4 == "4-4-2"):
+  if (option1 == 'Arbre de Décision') & (option2 == "Liga") & (option3 == "4-3-3") & (option4 == "4-4-2"):
       compo = composition(liga_433_DTC, "4-4-2")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Liga") & (option3 == "4-3-3") & (option4 == "4-3-3"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Liga") & (option3 == "4-3-3") & (option4 == "4-3-3"): 
       compo = composition(liga_433_DTC, "4-3-3")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Liga") & (option3 == "4-3-3") & (option4 == "4-1-2-3"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Liga") & (option3 == "4-3-3") & (option4 == "4-1-2-3"): 
       compo = composition(liga_433_DTC, "4-1-2-3")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Liga") & (option3 == "4-3-3") & (option4 == "4-2-1-3"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Liga") & (option3 == "4-3-3") & (option4 == "4-2-1-3"): 
       compo = composition(liga_433_DTC, "4-2-1-3")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Liga") & (option3 == "4-3-3") & (option4 == "3-5-2"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Liga") & (option3 == "4-3-3") & (option4 == "3-5-2"): 
       compo = composition(liga_433_DTC, "3-5-2")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Liga") & (option3 == "4-3-3") & (option4 == "5-3-2"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Liga") & (option3 == "4-3-3") & (option4 == "5-3-2"): 
       compo = composition(liga_433_DTC, "5-3-2")     
       
   if (option1 == 'Régression Logistique') & (option2 == "Liga") & (option3 == "4-1-2-3") & (option4 == "4-4-2"):
@@ -1841,17 +1841,17 @@ if page == pages[8] :
   elif (option1 == 'Régression Logistique') & (option2 == "Liga") & (option3 == "4-1-2-3") & (option4 == "5-3-2"): 
       compo = composition(liga_4123_LR, "5-3-2")
       
-  if (option1 == 'Arbre de Décission') & (option2 == "Liga") & (option3 == "4-1-2-3") & (option4 == "4-4-2"):
+  if (option1 == 'Arbre de Décision') & (option2 == "Liga") & (option3 == "4-1-2-3") & (option4 == "4-4-2"):
       compo = composition(liga_4123_DTC, "4-4-2")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Liga") & (option3 == "4-1-2-3") & (option4 == "4-3-3"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Liga") & (option3 == "4-1-2-3") & (option4 == "4-3-3"): 
       compo = composition(liga_4123_DTC, "4-3-3")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Liga") & (option3 == "4-1-2-3") & (option4 == "4-1-2-3"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Liga") & (option3 == "4-1-2-3") & (option4 == "4-1-2-3"): 
       compo = composition(liga_4123_DTC, "4-1-2-3")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Liga") & (option3 == "4-1-2-3") & (option4 == "4-2-1-3"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Liga") & (option3 == "4-1-2-3") & (option4 == "4-2-1-3"): 
       compo = composition(liga_4123_DTC, "4-2-1-3")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Liga") & (option3 == "4-1-2-3") & (option4 == "3-5-2"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Liga") & (option3 == "4-1-2-3") & (option4 == "3-5-2"): 
       compo = composition(liga_4123_DTC, "3-5-2")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Liga") & (option3 == "4-1-2-3") & (option4 == "5-3-2"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Liga") & (option3 == "4-1-2-3") & (option4 == "5-3-2"): 
       compo = composition(liga_4123_DTC, "5-3-2")
 
   if (option1 == 'Régression Logistique') & (option2 == "Liga") & (option3 == "4-2-1-3") & (option4 == "4-4-2"):
@@ -1867,17 +1867,17 @@ if page == pages[8] :
   elif (option1 == 'Régression Logistique') & (option2 == "Liga") & (option3 == "4-2-1-3") & (option4 == "5-3-2"): 
       compo = composition(liga_4213_LR, "5-3-2")
       
-  if (option1 == 'Arbre de Décission') & (option2 == "Liga") & (option3 == "4-2-1-3") & (option4 == "4-4-2"):
+  if (option1 == 'Arbre de Décision') & (option2 == "Liga") & (option3 == "4-2-1-3") & (option4 == "4-4-2"):
       compo = composition(liga_4213_DTC, "4-4-2")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Liga") & (option3 == "4-2-1-3") & (option4 == "4-3-3"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Liga") & (option3 == "4-2-1-3") & (option4 == "4-3-3"): 
       compo = composition(liga_4213_DTC, "4-3-3")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Liga") & (option3 == "4-2-1-3") & (option4 == "4-1-2-3"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Liga") & (option3 == "4-2-1-3") & (option4 == "4-1-2-3"): 
       compo = composition(liga_4213_DTC, "4-1-2-3")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Liga") & (option3 == "4-2-1-3") & (option4 == "4-2-1-3"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Liga") & (option3 == "4-2-1-3") & (option4 == "4-2-1-3"): 
       compo = composition(liga_4213_DTC, "4-2-1-3")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Liga") & (option3 == "4-2-1-3") & (option4 == "3-5-2"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Liga") & (option3 == "4-2-1-3") & (option4 == "3-5-2"): 
       compo = composition(liga_4213_DTC, "3-5-2")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Liga") & (option3 == "4-2-1-3") & (option4 == "5-3-2"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Liga") & (option3 == "4-2-1-3") & (option4 == "5-3-2"): 
       compo = composition(liga_4213_DTC, "5-3-2")
 
   if (option1 == 'Régression Logistique') & (option2 == "Liga") & (option3 == "3-5-2") & (option4 == "4-4-2"):
@@ -1893,17 +1893,17 @@ if page == pages[8] :
   elif (option1 == 'Régression Logistique') & (option2 == "Liga") & (option3 == "3-5-2") & (option4 == "5-3-2"): 
       compo = composition(liga_352_LR, "5-3-2")
       
-  if (option1 == 'Arbre de Décission') & (option2 == "Liga") & (option3 == "3-5-2") & (option4 == "4-4-2"):
+  if (option1 == 'Arbre de Décision') & (option2 == "Liga") & (option3 == "3-5-2") & (option4 == "4-4-2"):
       compo = composition(liga_352_DTC, "4-4-2")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Liga") & (option3 == "3-5-2") & (option4 == "4-3-3"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Liga") & (option3 == "3-5-2") & (option4 == "4-3-3"): 
       compo = composition(liga_352_DTC, "4-3-3")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Liga") & (option3 == "3-5-2") & (option4 == "4-1-2-3"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Liga") & (option3 == "3-5-2") & (option4 == "4-1-2-3"): 
       compo = composition(liga_352_DTC, "4-1-2-3")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Liga") & (option3 == "3-5-2") & (option4 == "4-2-1-3"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Liga") & (option3 == "3-5-2") & (option4 == "4-2-1-3"): 
       compo = composition(liga_352_DTC, "4-2-1-3")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Liga") & (option3 == "3-5-2") & (option4 == "3-5-2"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Liga") & (option3 == "3-5-2") & (option4 == "3-5-2"): 
       compo = composition(liga_352_DTC, "3-5-2")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Liga") & (option3 == "3-5-2") & (option4 == "5-3-2"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Liga") & (option3 == "3-5-2") & (option4 == "5-3-2"): 
       compo = composition(liga_352_DTC, "5-3-2")
 
   if (option1 == 'Régression Logistique') & (option2 == "Liga") & (option3 == "5-3-2") & (option4 == "4-4-2"):
@@ -1919,17 +1919,17 @@ if page == pages[8] :
   elif (option1 == 'Régression Logistique') & (option2 == "Liga") & (option3 == "5-3-2") & (option4 == "5-3-2"): 
       compo = composition(liga_532_LR, "5-3-2")
       
-  if (option1 == 'Arbre de Décission') & (option2 == "Liga") & (option3 == "5-3-2") & (option4 == "4-4-2"):
+  if (option1 == 'Arbre de Décision') & (option2 == "Liga") & (option3 == "5-3-2") & (option4 == "4-4-2"):
       compo = composition(liga_532_DTC, "4-4-2")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Liga") & (option3 == "5-3-2") & (option4 == "4-3-3"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Liga") & (option3 == "5-3-2") & (option4 == "4-3-3"): 
       compo = composition(liga_532_DTC, "4-3-3")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Liga") & (option3 == "5-3-2") & (option4 == "4-1-2-3"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Liga") & (option3 == "5-3-2") & (option4 == "4-1-2-3"): 
       compo = composition(liga_532_DTC, "4-1-2-3")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Liga") & (option3 == "5-3-2") & (option4 == "4-2-1-3"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Liga") & (option3 == "5-3-2") & (option4 == "4-2-1-3"): 
       compo = composition(liga_532_DTC, "4-2-1-3")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Liga") & (option3 == "5-3-2") & (option4 == "3-5-2"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Liga") & (option3 == "5-3-2") & (option4 == "3-5-2"): 
       compo = composition(liga_532_DTC, "3-5-2")
-  elif (option1 == 'Arbre de Décission') & (option2 == "Liga") & (option3 == "5-3-2") & (option4 == "5-3-2"): 
+  elif (option1 == 'Arbre de Décision') & (option2 == "Liga") & (option3 == "5-3-2") & (option4 == "5-3-2"): 
       compo = composition(liga_532_DTC, "5-3-2")  
       
   # if (option1 == 'Régression Logistique') & (option2 == "Premier League") & (option3 == "4-4-2") & (option4 == "4-4-2"):
@@ -1945,17 +1945,17 @@ if page == pages[8] :
   # elif (option1 == 'Régression Logistique') & (option2 == "Premier League") & (option3 == "4-4-2") & (option4 == "5-3-2"): 
   #     compo = composition(premierleague_442_LR, "5-3-2")
       
-  # if (option1 == 'Arbre de Décission') & (option2 == "Premier League") & (option3 == "4-4-2") & (option4 == "4-4-2"):
+  # if (option1 == 'Arbre de Décision') & (option2 == "Premier League") & (option3 == "4-4-2") & (option4 == "4-4-2"):
   #     compo = composition(premierleague_442_DTC, "4-4-2")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Premier League") & (option3 == "4-4-2") & (option4 == "4-3-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Premier League") & (option3 == "4-4-2") & (option4 == "4-3-3"): 
   #     compo = composition(premierleague_442_DTC, "4-3-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Premier League") & (option3 == "4-4-2") & (option4 == "4-1-2-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Premier League") & (option3 == "4-4-2") & (option4 == "4-1-2-3"): 
   #     compo = composition(premierleague_442_DTC, "4-1-2-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Premier League") & (option3 == "4-4-2") & (option4 == "4-2-1-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Premier League") & (option3 == "4-4-2") & (option4 == "4-2-1-3"): 
   #     compo = composition(premierleague_442_DTC, "4-2-1-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Premier League") & (option3 == "4-4-2") & (option4 == "3-5-2"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Premier League") & (option3 == "4-4-2") & (option4 == "3-5-2"): 
   #     compo = composition(premierleague_442_DTC, "3-5-2")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Premier League") & (option3 == "4-4-2") & (option4 == "5-3-2"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Premier League") & (option3 == "4-4-2") & (option4 == "5-3-2"): 
   #     compo = composition(premierleague_442_DTC, "5-3-2")
       
   # if (option1 == 'Régression Logistique') & (option2 == "Premier League") & (option3 == "4-3-3") & (option4 == "4-4-2"):
@@ -1971,17 +1971,17 @@ if page == pages[8] :
   # elif (option1 == 'Régression Logistique') & (option2 == "Premier League") & (option3 == "4-3-3") & (option4 == "5-3-2"): 
   #     compo = composition(premierleague_433_LR, "5-3-2")
       
-  # if (option1 == 'Arbre de Décission') & (option2 == "Premier League") & (option3 == "4-3-3") & (option4 == "4-4-2"):
+  # if (option1 == 'Arbre de Décision') & (option2 == "Premier League") & (option3 == "4-3-3") & (option4 == "4-4-2"):
   #     compo = composition(premierleague_433_DTC, "4-4-2")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Premier League") & (option3 == "4-3-3") & (option4 == "4-3-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Premier League") & (option3 == "4-3-3") & (option4 == "4-3-3"): 
   #     compo = composition(premierleague_433_DTC, "4-3-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Premier League") & (option3 == "4-3-3") & (option4 == "4-1-2-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Premier League") & (option3 == "4-3-3") & (option4 == "4-1-2-3"): 
   #     compo = composition(premierleague_433_DTC, "4-1-2-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Premier League") & (option3 == "4-3-3") & (option4 == "4-2-1-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Premier League") & (option3 == "4-3-3") & (option4 == "4-2-1-3"): 
   #     compo = composition(premierleague_433_DTC, "4-2-1-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Premier League") & (option3 == "4-3-3") & (option4 == "3-5-2"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Premier League") & (option3 == "4-3-3") & (option4 == "3-5-2"): 
   #     compo = composition(premierleague_433_DTC, "3-5-2")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Premier League") & (option3 == "4-3-3") & (option4 == "5-3-2"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Premier League") & (option3 == "4-3-3") & (option4 == "5-3-2"): 
   #     compo = composition(premierleague_433_DTC, "5-3-2")     
       
   # if (option1 == 'Régression Logistique') & (option2 == "Premier League") & (option3 == "4-1-2-3") & (option4 == "4-4-2"):
@@ -1997,17 +1997,17 @@ if page == pages[8] :
   # elif (option1 == 'Régression Logistique') & (option2 == "Premier League") & (option3 == "4-1-2-3") & (option4 == "5-3-2"): 
   #     compo = composition(premierleague_4123_LR, "5-3-2")
       
-  # if (option1 == 'Arbre de Décission') & (option2 == "Premier League") & (option3 == "4-1-2-3") & (option4 == "4-4-2"):
+  # if (option1 == 'Arbre de Décision') & (option2 == "Premier League") & (option3 == "4-1-2-3") & (option4 == "4-4-2"):
   #     compo = composition(premierleague_4123_DTC, "4-4-2")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Premier League") & (option3 == "4-1-2-3") & (option4 == "4-3-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Premier League") & (option3 == "4-1-2-3") & (option4 == "4-3-3"): 
   #     compo = composition(premierleague_4123_DTC, "4-3-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Premier League") & (option3 == "4-1-2-3") & (option4 == "4-1-2-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Premier League") & (option3 == "4-1-2-3") & (option4 == "4-1-2-3"): 
   #     compo = composition(premierleague_4123_DTC, "4-1-2-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Premier League") & (option3 == "4-1-2-3") & (option4 == "4-2-1-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Premier League") & (option3 == "4-1-2-3") & (option4 == "4-2-1-3"): 
   #     compo = composition(premierleague_4123_DTC, "4-2-1-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Premier League") & (option3 == "4-1-2-3") & (option4 == "3-5-2"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Premier League") & (option3 == "4-1-2-3") & (option4 == "3-5-2"): 
   #     compo = composition(premierleague_4123_DTC, "3-5-2")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Premier League") & (option3 == "4-1-2-3") & (option4 == "5-3-2"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Premier League") & (option3 == "4-1-2-3") & (option4 == "5-3-2"): 
   #     compo = composition(premierleague_4123_DTC, "5-3-2")
 
   # if (option1 == 'Régression Logistique') & (option2 == "Premier League") & (option3 == "4-2-1-3") & (option4 == "4-4-2"):
@@ -2023,17 +2023,17 @@ if page == pages[8] :
   # elif (option1 == 'Régression Logistique') & (option2 == "Premier League") & (option3 == "4-2-1-3") & (option4 == "5-3-2"): 
   #     compo = composition(premierleague_4213_LR, "5-3-2")
       
-  # if (option1 == 'Arbre de Décission') & (option2 == "Premier League") & (option3 == "4-2-1-3") & (option4 == "4-4-2"):
+  # if (option1 == 'Arbre de Décision') & (option2 == "Premier League") & (option3 == "4-2-1-3") & (option4 == "4-4-2"):
   #     compo = composition(premierleague_4213_DTC, "4-4-2")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Premier League") & (option3 == "4-2-1-3") & (option4 == "4-3-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Premier League") & (option3 == "4-2-1-3") & (option4 == "4-3-3"): 
   #     compo = composition(premierleague_4213_DTC, "4-3-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Premier League") & (option3 == "4-2-1-3") & (option4 == "4-1-2-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Premier League") & (option3 == "4-2-1-3") & (option4 == "4-1-2-3"): 
   #     compo = composition(premierleague_4213_DTC, "4-1-2-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Premier League") & (option3 == "4-2-1-3") & (option4 == "4-2-1-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Premier League") & (option3 == "4-2-1-3") & (option4 == "4-2-1-3"): 
   #     compo = composition(premierleague_4213_DTC, "4-2-1-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Premier League") & (option3 == "4-2-1-3") & (option4 == "3-5-2"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Premier League") & (option3 == "4-2-1-3") & (option4 == "3-5-2"): 
   #     compo = composition(premierleague_4213_DTC, "3-5-2")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Premier League") & (option3 == "4-2-1-3") & (option4 == "5-3-2"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Premier League") & (option3 == "4-2-1-3") & (option4 == "5-3-2"): 
   #     compo = composition(premierleague_4213_DTC, "5-3-2")
 
   # if (option1 == 'Régression Logistique') & (option2 == "Premier League") & (option3 == "3-5-2") & (option4 == "4-4-2"):
@@ -2049,17 +2049,17 @@ if page == pages[8] :
   # elif (option1 == 'Régression Logistique') & (option2 == "Premier League") & (option3 == "3-5-2") & (option4 == "5-3-2"): 
   #     compo = composition(premierleague_352_LR, "5-3-2")
       
-  # if (option1 == 'Arbre de Décission') & (option2 == "Premier League") & (option3 == "3-5-2") & (option4 == "4-4-2"):
+  # if (option1 == 'Arbre de Décision') & (option2 == "Premier League") & (option3 == "3-5-2") & (option4 == "4-4-2"):
   #     compo = composition(premierleague_352_DTC, "4-4-2")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Premier League") & (option3 == "3-5-2") & (option4 == "4-3-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Premier League") & (option3 == "3-5-2") & (option4 == "4-3-3"): 
   #     compo = composition(premierleague_352_DTC, "4-3-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Premier League") & (option3 == "3-5-2") & (option4 == "4-1-2-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Premier League") & (option3 == "3-5-2") & (option4 == "4-1-2-3"): 
   #     compo = composition(premierleague_352_DTC, "4-1-2-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Premier League") & (option3 == "3-5-2") & (option4 == "4-2-1-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Premier League") & (option3 == "3-5-2") & (option4 == "4-2-1-3"): 
   #     compo = composition(premierleague_352_DTC, "4-2-1-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Premier League") & (option3 == "3-5-2") & (option4 == "3-5-2"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Premier League") & (option3 == "3-5-2") & (option4 == "3-5-2"): 
   #     compo = composition(premierleague_352_DTC, "3-5-2")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Premier League") & (option3 == "3-5-2") & (option4 == "5-3-2"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Premier League") & (option3 == "3-5-2") & (option4 == "5-3-2"): 
   #     compo = composition(premierleague_352_DTC, "5-3-2")
 
   # if (option1 == 'Régression Logistique') & (option2 == "Premier League") & (option3 == "5-3-2") & (option4 == "4-4-2"):
@@ -2075,17 +2075,17 @@ if page == pages[8] :
   # elif (option1 == 'Régression Logistique') & (option2 == "Premier League") & (option3 == "5-3-2") & (option4 == "5-3-2"): 
   #     compo = composition(premierleague_532_LR, "5-3-2")
       
-  # if (option1 == 'Arbre de Décission') & (option2 == "Premier League") & (option3 == "5-3-2") & (option4 == "4-4-2"):
+  # if (option1 == 'Arbre de Décision') & (option2 == "Premier League") & (option3 == "5-3-2") & (option4 == "4-4-2"):
   #     compo = composition(premierleague_532_DTC, "4-4-2")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Premier League") & (option3 == "5-3-2") & (option4 == "4-3-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Premier League") & (option3 == "5-3-2") & (option4 == "4-3-3"): 
   #     compo = composition(premierleague_532_DTC, "4-3-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Premier League") & (option3 == "5-3-2") & (option4 == "4-1-2-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Premier League") & (option3 == "5-3-2") & (option4 == "4-1-2-3"): 
   #     compo = composition(premierleague_532_DTC, "4-1-2-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Premier League") & (option3 == "5-3-2") & (option4 == "4-2-1-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Premier League") & (option3 == "5-3-2") & (option4 == "4-2-1-3"): 
   #     compo = composition(premierleague_532_DTC, "4-2-1-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Premier League") & (option3 == "5-3-2") & (option4 == "3-5-2"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Premier League") & (option3 == "5-3-2") & (option4 == "3-5-2"): 
   #     compo = composition(premierleague_532_DTC, "3-5-2")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Premier League") & (option3 == "5-3-2") & (option4 == "5-3-2"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Premier League") & (option3 == "5-3-2") & (option4 == "5-3-2"): 
   #     compo = composition(premierleague_532_DTC, "5-3-2")
       
   # if (option1 == 'Régression Logistique') & (option2 == "Serie A") & (option3 == "4-4-2") & (option4 == "4-4-2"):
@@ -2101,17 +2101,17 @@ if page == pages[8] :
   # elif (option1 == 'Régression Logistique') & (option2 == "Serie A") & (option3 == "4-4-2") & (option4 == "5-3-2"): 
   #     compo = composition(serieA_442_LR, "5-3-2")
       
-  # if (option1 == 'Arbre de Décission') & (option2 == "Serie A") & (option3 == "4-4-2") & (option4 == "4-4-2"):
+  # if (option1 == 'Arbre de Décision') & (option2 == "Serie A") & (option3 == "4-4-2") & (option4 == "4-4-2"):
   #     compo = composition(serieA_442_DTC, "4-4-2")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Serie A") & (option3 == "4-4-2") & (option4 == "4-3-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Serie A") & (option3 == "4-4-2") & (option4 == "4-3-3"): 
   #     compo = composition(serieA_442_DTC, "4-3-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Serie A") & (option3 == "4-4-2") & (option4 == "4-1-2-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Serie A") & (option3 == "4-4-2") & (option4 == "4-1-2-3"): 
   #     compo = composition(serieA_442_DTC, "4-1-2-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Serie A") & (option3 == "4-4-2") & (option4 == "4-2-1-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Serie A") & (option3 == "4-4-2") & (option4 == "4-2-1-3"): 
   #     compo = composition(serieA_442_DTC, "4-2-1-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Serie A") & (option3 == "4-4-2") & (option4 == "3-5-2"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Serie A") & (option3 == "4-4-2") & (option4 == "3-5-2"): 
   #     compo = composition(serieA_442_DTC, "3-5-2")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Serie A") & (option3 == "4-4-2") & (option4 == "5-3-2"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Serie A") & (option3 == "4-4-2") & (option4 == "5-3-2"): 
   #     compo = composition(serieA_442_DTC, "5-3-2")
       
   # if (option1 == 'Régression Logistique') & (option2 == "Serie A") & (option3 == "4-3-3") & (option4 == "4-4-2"):
@@ -2127,17 +2127,17 @@ if page == pages[8] :
   # elif (option1 == 'Régression Logistique') & (option2 == "Serie A") & (option3 == "4-3-3") & (option4 == "5-3-2"): 
   #     compo = composition(serieA_433_LR, "5-3-2")
       
-  # if (option1 == 'Arbre de Décission') & (option2 == "Serie A") & (option3 == "4-3-3") & (option4 == "4-4-2"):
+  # if (option1 == 'Arbre de Décision') & (option2 == "Serie A") & (option3 == "4-3-3") & (option4 == "4-4-2"):
   #     compo = composition(serieA_433_DTC, "4-4-2")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Serie A") & (option3 == "4-3-3") & (option4 == "4-3-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Serie A") & (option3 == "4-3-3") & (option4 == "4-3-3"): 
   #     compo = composition(serieA_433_DTC, "4-3-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Serie A") & (option3 == "4-3-3") & (option4 == "4-1-2-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Serie A") & (option3 == "4-3-3") & (option4 == "4-1-2-3"): 
   #     compo = composition(serieA_433_DTC, "4-1-2-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Serie A") & (option3 == "4-3-3") & (option4 == "4-2-1-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Serie A") & (option3 == "4-3-3") & (option4 == "4-2-1-3"): 
   #     compo = composition(serieA_433_DTC, "4-2-1-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Serie A") & (option3 == "4-3-3") & (option4 == "3-5-2"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Serie A") & (option3 == "4-3-3") & (option4 == "3-5-2"): 
   #     compo = composition(serieA_433_DTC, "3-5-2")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Serie A") & (option3 == "4-3-3") & (option4 == "5-3-2"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Serie A") & (option3 == "4-3-3") & (option4 == "5-3-2"): 
   #     compo = composition(serieA_433_DTC, "5-3-2")     
       
   # if (option1 == 'Régression Logistique') & (option2 == "Serie A") & (option3 == "4-1-2-3") & (option4 == "4-4-2"):
@@ -2153,17 +2153,17 @@ if page == pages[8] :
   # elif (option1 == 'Régression Logistique') & (option2 == "Serie A") & (option3 == "4-1-2-3") & (option4 == "5-3-2"): 
   #     compo = composition(serieA_4123_LR, "5-3-2")
       
-  # if (option1 == 'Arbre de Décission') & (option2 == "Serie A") & (option3 == "4-1-2-3") & (option4 == "4-4-2"):
+  # if (option1 == 'Arbre de Décision') & (option2 == "Serie A") & (option3 == "4-1-2-3") & (option4 == "4-4-2"):
   #     compo = composition(serieA_4123_DTC, "4-4-2")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Serie A") & (option3 == "4-1-2-3") & (option4 == "4-3-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Serie A") & (option3 == "4-1-2-3") & (option4 == "4-3-3"): 
   #     compo = composition(serieA_4123_DTC, "4-3-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Serie A") & (option3 == "4-1-2-3") & (option4 == "4-1-2-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Serie A") & (option3 == "4-1-2-3") & (option4 == "4-1-2-3"): 
   #     compo = composition(serieA_4123_DTC, "4-1-2-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Serie A") & (option3 == "4-1-2-3") & (option4 == "4-2-1-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Serie A") & (option3 == "4-1-2-3") & (option4 == "4-2-1-3"): 
   #     compo = composition(serieA_4123_DTC, "4-2-1-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Serie A") & (option3 == "4-1-2-3") & (option4 == "3-5-2"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Serie A") & (option3 == "4-1-2-3") & (option4 == "3-5-2"): 
   #     compo = composition(serieA_4123_DTC, "3-5-2")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Serie A") & (option3 == "4-1-2-3") & (option4 == "5-3-2"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Serie A") & (option3 == "4-1-2-3") & (option4 == "5-3-2"): 
   #     compo = composition(serieA_4123_DTC, "5-3-2")
 
   # if (option1 == 'Régression Logistique') & (option2 == "Serie A") & (option3 == "4-2-1-3") & (option4 == "4-4-2"):
@@ -2179,17 +2179,17 @@ if page == pages[8] :
   # elif (option1 == 'Régression Logistique') & (option2 == "Serie A") & (option3 == "4-2-1-3") & (option4 == "5-3-2"): 
   #     compo = composition(serieA_4213_LR, "5-3-2")
       
-  # if (option1 == 'Arbre de Décission') & (option2 == "Serie A") & (option3 == "4-2-1-3") & (option4 == "4-4-2"):
+  # if (option1 == 'Arbre de Décision') & (option2 == "Serie A") & (option3 == "4-2-1-3") & (option4 == "4-4-2"):
   #     compo = composition(serieA_4213_DTC, "4-4-2")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Serie A") & (option3 == "4-2-1-3") & (option4 == "4-3-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Serie A") & (option3 == "4-2-1-3") & (option4 == "4-3-3"): 
   #     compo = composition(serieA_4213_DTC, "4-3-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Serie A") & (option3 == "4-2-1-3") & (option4 == "4-1-2-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Serie A") & (option3 == "4-2-1-3") & (option4 == "4-1-2-3"): 
   #     compo = composition(serieA_4213_DTC, "4-1-2-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Serie A") & (option3 == "4-2-1-3") & (option4 == "4-2-1-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Serie A") & (option3 == "4-2-1-3") & (option4 == "4-2-1-3"): 
   #     compo = composition(serieA_4213_DTC, "4-2-1-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Serie A") & (option3 == "4-2-1-3") & (option4 == "3-5-2"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Serie A") & (option3 == "4-2-1-3") & (option4 == "3-5-2"): 
   #     compo = composition(serieA_4213_DTC, "3-5-2")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Serie A") & (option3 == "4-2-1-3") & (option4 == "5-3-2"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Serie A") & (option3 == "4-2-1-3") & (option4 == "5-3-2"): 
   #     compo = composition(serieA_4213_DTC, "5-3-2")
 
   # if (option1 == 'Régression Logistique') & (option2 == "Serie A") & (option3 == "3-5-2") & (option4 == "4-4-2"):
@@ -2205,17 +2205,17 @@ if page == pages[8] :
   # elif (option1 == 'Régression Logistique') & (option2 == "Serie A") & (option3 == "3-5-2") & (option4 == "5-3-2"): 
   #     compo = composition(serieA_352_LR, "5-3-2")
       
-  # if (option1 == 'Arbre de Décission') & (option2 == "Serie A") & (option3 == "3-5-2") & (option4 == "4-4-2"):
+  # if (option1 == 'Arbre de Décision') & (option2 == "Serie A") & (option3 == "3-5-2") & (option4 == "4-4-2"):
   #     compo = composition(serieA_352_DTC, "4-4-2")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Serie A") & (option3 == "3-5-2") & (option4 == "4-3-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Serie A") & (option3 == "3-5-2") & (option4 == "4-3-3"): 
   #     compo = composition(serieA_352_DTC, "4-3-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Serie A") & (option3 == "3-5-2") & (option4 == "4-1-2-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Serie A") & (option3 == "3-5-2") & (option4 == "4-1-2-3"): 
   #     compo = composition(serieA_352_DTC, "4-1-2-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Serie A") & (option3 == "3-5-2") & (option4 == "4-2-1-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Serie A") & (option3 == "3-5-2") & (option4 == "4-2-1-3"): 
   #     compo = composition(serieA_352_DTC, "4-2-1-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Serie A") & (option3 == "3-5-2") & (option4 == "3-5-2"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Serie A") & (option3 == "3-5-2") & (option4 == "3-5-2"): 
   #     compo = composition(serieA_352_DTC, "3-5-2")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Serie A") & (option3 == "3-5-2") & (option4 == "5-3-2"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Serie A") & (option3 == "3-5-2") & (option4 == "5-3-2"): 
   #     compo = composition(serieA_352_DTC, "5-3-2")
 
   # if (option1 == 'Régression Logistique') & (option2 == "Serie A") & (option3 == "5-3-2") & (option4 == "4-4-2"):
@@ -2231,17 +2231,17 @@ if page == pages[8] :
   # elif (option1 == 'Régression Logistique') & (option2 == "Serie A") & (option3 == "5-3-2") & (option4 == "5-3-2"): 
   #     compo = composition(serieA_532_LR, "5-3-2")
       
-  # if (option1 == 'Arbre de Décission') & (option2 == "Serie A") & (option3 == "5-3-2") & (option4 == "4-4-2"):
+  # if (option1 == 'Arbre de Décision') & (option2 == "Serie A") & (option3 == "5-3-2") & (option4 == "4-4-2"):
   #     compo = composition(serieA_532_DTC, "4-4-2")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Serie A") & (option3 == "5-3-2") & (option4 == "4-3-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Serie A") & (option3 == "5-3-2") & (option4 == "4-3-3"): 
   #     compo = composition(serieA_532_DTC, "4-3-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Serie A") & (option3 == "5-3-2") & (option4 == "4-1-2-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Serie A") & (option3 == "5-3-2") & (option4 == "4-1-2-3"): 
   #     compo = composition(serieA_532_DTC, "4-1-2-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Serie A") & (option3 == "5-3-2") & (option4 == "4-2-1-3"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Serie A") & (option3 == "5-3-2") & (option4 == "4-2-1-3"): 
   #     compo = composition(serieA_532_DTC, "4-2-1-3")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Serie A") & (option3 == "5-3-2") & (option4 == "3-5-2"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Serie A") & (option3 == "5-3-2") & (option4 == "3-5-2"): 
   #     compo = composition(serieA_532_DTC, "3-5-2")
-  # elif (option1 == 'Arbre de Décission') & (option2 == "Serie A") & (option3 == "5-3-2") & (option4 == "5-3-2"): 
+  # elif (option1 == 'Arbre de Décision') & (option2 == "Serie A") & (option3 == "5-3-2") & (option4 == "5-3-2"): 
       compo = composition(serieA_532_DTC, "5-3-2")          
           
   tactique = option4
